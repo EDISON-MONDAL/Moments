@@ -391,53 +391,64 @@ ffmpeg.setFfmpegPath( pathToFfmpeg )
 
 
 
-
 // video resizing and compression
-  app.post('/resizeVideo', (req, res)=>{
-    let file = req.files.video_field_ajax_appendFormData
+app.post('/resizeVideo', (req, res) => {
+  let file = req.files.video_field_ajax_appendFormData;
 
-    const d = new Date();
-    const month = Number( d.getMonth() + 1)
-    const date_string = d.getDate() + '-' + month + '-' + d.getFullYear() + ' ' + d.getHours() + '-' + d.getMinutes() + '-' + d.getSeconds()
+  const d = new Date();
+  const month = Number(d.getMonth() + 1);
+  const date_string =
+    d.getDate() +
+    '-' +
+    month +
+    '-' +
+    d.getFullYear() +
+    ' ' +
+    d.getHours() +
+    '-' +
+    d.getMinutes() +
+    '-' +
+    d.getSeconds();
 
-    let file_name = req.body.myId + ' ' + date_string + ' ' + file.name
-    
-    file.mv('tmp/' + file_name , function(err){
-      if(err) return res.sendStatus(500).send(err);
-      console.log('File Uploaded successfully')
-    })
-    
-    
-    
-    ffmpeg( 'tmp/' + file_name )
-    .format('mp4')
-    .videoCodec('libx264')
-    .videoBitrate('200k', true)
-    .audioCodec('libmp3lame')
-    .size('100x?') // 640x480, 1280x?
-    .on('error', function(err) {
-      console.log('An error occurred: ' + err.message);
+  let file_name =
+    req.body.myId + ' ' + date_string + ' ' + file.name;
 
-      // delete unprocessed uploaded video
-      fs.unlink("tmp/" + file_name, function(err){
-        if(err) throw err;
-        console.log('unprocessed video deleted')
+  file.mv('tmp/' + file_name, function (err) {
+    if (err) {
+      console.error(err);
+      return res.status(500).send('Error uploading file');
+    }
+    console.log('File Uploaded successfully');
+
+    ffmpeg('tmp/' + file_name)
+      .format('mp4')
+      .videoCodec('libx264')
+      .videoBitrate('200k', true)
+      .audioCodec('libmp3lame')
+      .size('100x?') // 640x480, 1280x?
+      .on('error', function (err) {
+        console.log('An error occurred: ' + err.message);
+
+        // Delete unprocessed uploaded video
+        fs.unlink('tmp/' + file_name, function (err) {
+          if (err) console.error(err);
+          console.log('Unprocessed video deleted');
+        });
+
+        return res.status(500).send('Error processing video');
       })
-    })
-    .on('end', function() {
-      console.log('Processing finished !');
+      .on('end', function () {
+        console.log('Processing finished!');
 
-      // delete unprocessed uploaded video
-      fs.unlink("tmp/" + file_name, function(err){
-        if(err) throw err;
-        console.log('unprocessed video deleted')
-      })
+        // Delete unprocessed uploaded video
+        fs.unlink('tmp/' + file_name, function (err) {
+          if (err) console.error(err);
+          console.log('Unprocessed video deleted');
+        });
 
-
-      // manage compressed video
+        // Manage compressed video
         try {
-          
-          const filePath = path.join(__dirname, 'tmp', "output-" + file_name);
+          const filePath = path.join(__dirname, 'tmp', 'output-' + file_name);
 
           // Check if the file exists
           fs.stat(filePath, (err, stat) => {
@@ -456,23 +467,20 @@ ffmpeg.setFfmpegPath( pathToFfmpeg )
             const readStream = fs.createReadStream(filePath);
             readStream.pipe(res);
           });
-          
 
-          // delete compressed video
+          // Delete compressed video
           // fs.unlink("tmp/output-" + file_name, function(err){
-          //   if(err) throw err;
-          //   console.log('compressed video deleted')
-          // })
-
+          //   if(err) console.error(err);
+          //   console.log('Compressed video deleted')
+          // });
         } catch (err) {
           console.error(err);
           res.status(500).send('Internal Server Error');
-        }       
-      // manage compressed video
-    })
-    .save("tmp/output-" + file_name);
-    
-  })
+        }
+      })
+      .save('tmp/output-' + file_name);
+  });
+});
 // video resizing and compression
 
 
