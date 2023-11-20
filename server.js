@@ -436,22 +436,7 @@ ffmpeg.setFfmpegPath( pathToFfmpeg )
 
       // manage compressed video
         try {
-          /*
-          // Read the MP4 file and create a buffer
-          const buffer = fs.readFileSync( "tmp/output-" + file_name );
-      
-          // Set appropriate headers
-          res.setHeader('Content-Type', 'video/mp4');
-          res.setHeader('Content-Length', buffer.length);
-      
-          // Send the buffer as the response
-          // res.json({videoBuffer: buffer})
-          setTimeout(()=>{
-            res.send(JSON.stringify(buffer))
-          }, 2000)          
-          // res.end(buffer);
-          */
-
+          
           const filePath = path.join(__dirname, 'tmp', "output-" + file_name);
 
           // Check if the file exists

@@ -5317,50 +5317,7 @@ function backToLogInLandingPage(){
 
                               // Set the video source to the created data URL
                               $('#testVideoElem').attr('src', videoURL);
-
-                              /*
-                              const jsonData = JSON.parse(data)
-                              console.log('====================================== '+ data)
                               
-                              console.log('-------------- -------------- '+ jsonData.videoBuffer.type ) 
-
-
-                              // Assume you have a video buffer like {type: 'Buffer', data: ...}
-
-                              // Convert the video buffer data to Uint8Array
-                              const uint8Array = new Uint8Array( jsonData.videoBuffer.data);
-
-                              // Create a Blob from the Uint8Array
-                              const videoBlob = new Blob([uint8Array], { type: 'video/mp4' });
-
-                              // Example using ArrayBuffer (convert your binary data to ArrayBuffer if needed)
-                              // const videoArrayBuffer = uint8Array.buffer; // Use this if your data is already an ArrayBuffer
-
-                              // Create a Blob from the ArrayBuffer
-                              // const videoBlob = new Blob([videoArrayBuffer], { type: 'video/mp4' });
-
-                              const videoElement = document.getElementById('testVideoElem');
-
-                              // Set the video source using the buffer
-                              videoElement.src = URL.createObjectURL(videoBlob);
-
-                              // Handle errors
-                              videoElement.addEventListener('error', (event) => {
-                                  console.error('Error loading the video:', event);
-                              });
-
-                              // Optionally, handle the 'loadedmetadata' event to perform actions once the metadata is loaded
-                              videoElement.addEventListener('loadedmetadata', () => {
-                                  console.log('Video metadata loaded');
-                              });
-
-                              // Optionally, handle the 'loadeddata' event to perform actions once the first frame is loaded
-                              videoElement.addEventListener('loadeddata', () => {
-                                  console.log('First frame loaded');
-                              });
-
-                              // Optionally, handle other video events like 'play', 'pause', etc.
-                              */
                             },
                             error: function (error) {
                               // $('#response').html('Error uploading video: ' + error.responseText);
