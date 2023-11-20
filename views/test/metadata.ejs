@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Metadata Extraction</title>
+  <!-- Ajax library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+  <script type="text/javascript">
+    function extractMetadata() {
+    var url = document.getElementById("url").value;
+  
+    $.ajax({
+                  url: '/metaInfo', // Replace with your server endpoint
+                  type: 'GET',
+                  data: {
+                    url: url,
+                  },
+                  success: function(response) {
+                    alert(response)
+                  },
+                  error: function(error) {
+                    
+                      console.warn("Err getting metadata!" + error)               
+                    
+                  }
+                })
+  }
+  
+  
+  
+    </script>
+</head>
+<body>
+  <h1>Metadata Extraction</h1>
+  <form>
+    <label for="url">Enter a link:</label>
+    <input type="text" id="url" name="url">
+    <button type="button" onclick="extractMetadata()">Extract Metadata</button>
+  </form>
+  <div id="metadataContainer"></div>
+  
+</body>
+</html>

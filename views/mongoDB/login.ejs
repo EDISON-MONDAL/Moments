@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ajax library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <!-- DOM purify -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.1/purify.js" integrity="sha512-TRW4uJEyH03RBYDDP/0Nerf3y1zPCPzmLBq5IwjYtUyPD505Aro7Xh6ELpKmnH3yeKj6MP3meheJMJXB4aN0eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="login.css">
+
+    <title>Login</title>
+</head>
+<body>
+  <div id="bodyDeactivate"></div>
+
+
+  <!-- whether quick user will be made or not -->
+    <div id="quickUserConfirmDiv">
+
+      <span>Do you want quick login option from now on. Specially, if you don't like to type password for every single login then this feature is best for you. So what do you think?</span>
+      <button id="quickLoginTrue">I want quick login.</button>
+      <button id="quickLoginFalse">I don't need.</button>
+
+    </div>
+  <!-- whether quick user will be made or not -->
+
+  <!-- email varification prompt -->
+    <div id="email-varification-prompt">
+      <span>A verification link has been sent to <span class="mail-to-varify"></span>. Please verify first than login.</span>
+      <button>I did it.</button>
+    </div>
+  <!-- email varification prompt -->
+
+
+
+  <div id="subBody">
+    <h1>Welcome to Globe Social Media</h1>
+    
+    <h2 id="logInButton"><a href="#leftSideBar">Log in</a></h2>
+    <h2 id="signInButton"><a href="#leftSideBar">Sign in</a></h2>
+    <h2 id="joinAMeetingButton"><a href="#leftSideBar">Join a meeting!</a></h2>
+
+    <!-- Right side quick login users link -->
+      <div id="rightSideBar">
+        <div id="currentlyLoggedInUser">
+
+        </div>
+        <div id="allQuickUsers">
+
+        </div>
+      </div>
+    <!-- Right side quick login users link -->
+    
+    <!-- Left side bar all forms -->
+      <div id="leftSideBar">
+        <!-- join a meeting -->
+          <div id="joinMeetingFormContainer" class="formsContainer">
+            <h3>Join Meeting Form:</h3>
+            <form id="joinMeetingForm">
+              <label for="meetingId">Meeting Id:</label>
+              <input type="number" name="meetingId" >
+              <label for="meetingPassword">Password:</label>
+              <input type="password" name="meetingPassword">
+              <button>Join</button>
+            </form>
+          </div>
+        <!-- join a meeting -->
+  
+        <!-- login form -->
+          <div id="loginFormContainer" class="formsContainer">
+            <h3>Log In Form:</h3>
+            <form class="login">
+              <label for="email">em@il</label>
+              <input type="email" name="email">
+              <label for="password">Password:</label>
+              <input type="password" name="password">
+              <button type="submit">login</button>
+            </form>
+
+            <!-- <button class="logout">logout</button> -->
+          </div>
+        <!-- login form -->
+
+        <!-- signin form -->
+          <div id="signinFormContainer" class="formsContainer">
+            <h3>Sign In Form:</h3>
+            
+            <form class="signup">
+              <label for="email">email:</label>
+              <input type="email" name="email" required placeholder="Put your em@il here. (required)"><br>
+              <label for="firstname">First Name:</label>
+              <input type="text" name="firstname" required maxlength="15" placeholder="Put your first name within 15 charecters. (required)">
+              <label for="middlename">Middle Name:</label>
+              <input type="text" name="middlename" maxlength="15" placeholder="Put your middle name within 15 charecters. (optional)">
+              <label for="lastname">Last Name:</label>
+              <input type="text" name="lastname" required maxlength="15" placeholder="Put your last name within 15 charecters. (required)">
+              <label for="nickname">Nick Name:</label>
+              <input type="text" name="nickname" maxlength="15" placeholder="Put your nick name within 15 charecters. (optional)">
+              <label for="password">Password:</label>
+              <input type="password" name="password" required maxlength="15" placeholder="Put your password within 15 charecters. (required)">
+              <button type="submit">signup</button>
+            </form>
+          </div>        
+        <!-- signin form -->
+      </div>
+    <!-- Left side bar all forms -->
+  </div>
+</body>
+<script>
+
+  //forms hide and seak
+    //join a meeting button onclick
+      document.getElementById( 'joinAMeetingButton' ).onclick = ()=>{
+        //hide sign in
+          document.getElementById( 'signinFormContainer' ).style.left = '600px'
+        //hide sign in
+
+        //hide log in
+          document.getElementById( 'loginFormContainer' ).style.left = '-600px'
+        //hide log in
+
+        document.getElementById( 'joinMeetingFormContainer' ).style.top = 0
+      }
+    //join a meeting button onclick
+
+    //login button onclick
+      document.getElementById( 'logInButton' ).onclick = ()=>{
+        //hide sign in
+          document.getElementById( 'signinFormContainer' ).style.left = '600px'
+        //hide sign in
+
+        //hide join in
+          document.getElementById( 'joinMeetingFormContainer' ).style.top = '500px'
+        //hide join in
+
+        document.getElementById( 'loginFormContainer' ).style.left = 0
+      }
+    //login button onclick
+
+    //sign in button onclick
+      document.getElementById( 'signInButton' ).onclick = ()=>{
+        //hide join in
+          document.getElementById( 'joinMeetingFormContainer' ).style.top = '500px'
+        //hide join in
+
+        //hide log in
+          document.getElementById( 'loginFormContainer' ).style.left = '-600px'
+        //hide log in
+
+        document.getElementById( 'signinFormContainer' ).style.left = 0
+      }
+    //sign in button onclick
+  //forms hide and seak
+
+
+  //quick user control div
+  function rePositionQuickUserSelectionBox(){
+    const quickUserConfirmDivWidth = document.getElementById('quickUserConfirmDiv').offsetWidth
+    const quickUserConfirmDivHeight = document.getElementById('quickUserConfirmDiv').offsetHeight
+
+    const getWidthSpace = window.innerWidth - quickUserConfirmDivWidth
+    const getHeightSpace = window.innerHeight - quickUserConfirmDivHeight
+
+    const getWidthSpaceHalf = getWidthSpace/2
+    const getHeightSpaceHalf = getHeightSpace/2
+
+    document.getElementById('quickUserConfirmDiv').style.left = getWidthSpaceHalf + 'px'
+    document.getElementById('quickUserConfirmDiv').style.bottom = getHeightSpaceHalf + 'px'
+  }
+  //quick user control div
+
+
+  // email verification prompt
+    function emailVerificationPrompt(){
+      const emailPromptWidth = document.getElementById('email-varification-prompt').offsetWidth
+      const emailPromptHeight = document.getElementById('email-varification-prompt').offsetHeight
+
+      const remainingWidth = window.innerWidth - emailPromptWidth
+      const remainingHeight = window.innerHeight - emailPromptHeight
+
+      const remainingWidthHalf = remainingWidth / 2
+      const remainingHeightHalf = remainingHeight / 2
+
+      document.getElementById('email-varification-prompt').style.top = remainingHeightHalf + 'px'
+      document.getElementById('email-varification-prompt').style.left = remainingWidthHalf + 'px'
+    }
+  // email verification prompt
+
+  
+</script>
+
+<script defer src="/firebaseNewLogin.bundle.js"></script> <!--         src/firebase_new/login.js          -->
+</html>

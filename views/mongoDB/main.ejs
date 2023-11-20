@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ajax library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <!-- DOM purify -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.1/purify.js" integrity="sha512-TRW4uJEyH03RBYDDP/0Nerf3y1zPCPzmLBq5IwjYtUyPD505Aro7Xh6ELpKmnH3yeKj6MP3meheJMJXB4aN0eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="updateAllProfile.css">
+
+    <title>Home</title>
+    
+</head>
+<body id="body" onresize="rePositionProfileDescription(), stePositionMessenger(), resezizeMessenger(), profilePicReviewBeforeUpload(), allPicPreviewUpadateAllProfile(), hideAndShowActiveFreindList(), repositionFriendsRequestsFollowers()">
+  
+    <!-- header -->
+    <div id="headerBar">
+        <div id="controls">
+            <div id="homeButton">
+                <span class="material-icons-outlined">home</span>
+            </div>
+
+            <div id="messengerButton">
+                <span class="material-icons-outlined">question_answer</span>
+                <div id="numberOfUnseenMessageHolder"></div>
+            </div>
+            
+            <div id="myProfileLink">
+                <img src='https://icons.iconarchive.com/icons/papirus-team/papirus-status/512/avatar-default-icon.png' alt="" id="profilePic">
+            </div>
+
+
+            <div id="activeFriendsListButton" class="freindListOn">
+                <span class="material-icons-outlined">groups</span>
+            </div>
+            <div id="activeFriendsListButton" class="freindListOff">
+                <span class="material-icons-outlined">groups</span>
+            </div>
+
+
+            <div id="friendsAndRequestButton">
+              <span class="material-icons-outlined">how_to_reg</span>
+            </div>
+
+            <div id="findPeople">
+              <span class="material-icons-outlined">public</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- header -->
+
+    
+
+    <!-- body -->
+
+      <!-- profile description popup -->
+        <div id="profileDescription">
+          <button id="closeProfileDescription"><span class="material-icons-outlined">close</span></button>
+            <div id="picAndNameBar">
+              <img src="https://icons.iconarchive.com/icons/papirus-team/papirus-status/512/avatar-default-icon.png" alt="" id="profilePicDescription">
+              <div id="profileName"></div>
+              <button id="logout">Log Out</button>
+            </div>
+        </div>
+      <!-- profile description popup -->
+
+
+      <!-- messenger panel popup -->
+        <div id="messengerPanel">
+            <button id="closeMessenger"><span class="material-icons-outlined">close</span></button>
+
+            <div id="messegeLeftSide">
+                <div id="messegeLeftSideHeader">
+                  <div id="messegeLeftSideHeaderSubSection">
+                    <span class="material-icons-outlined searchPersonMessage">person_search</span>
+                    <span class="material-icons-outlined groupMessage">groups_2</span>
+                    <span class="material-icons-outlined joinMeeting">airplay</span>
+                    <span class="material-icons-outlined allChatList">view_list</span>
+                    <span class="material-icons-outlined addInMessenger">how_to_reg</span>
+                    <span class="material-icons-outlined meeting">emergency_recording</span>
+                  </div>
+                </div>
+
+                <!-- search to send sms -->
+                  <div id="searchToSendMessage">
+                    <button id="closeSearchToSendMessage"><span class="material-icons-outlined">east</span></button>
+
+                    <p id="searchToSendMessageHeading">Search to send message.</p>
+
+                    <div id="searchToSendMessageForm">
+                      <input type="email" placeholder="Type id to search.">
+                      <button><span class="material-icons-outlined">search</span></button>
+                    </div>
+
+                    <div id="searchToSendMessageForm-output"></div>
+                  </div>
+                <!-- search to send sms -->
+
+
+                <!-- search to send group sms -->
+                  <div id="searchToSendGroupMessage">
+                    <button id="closeSearchToSendGroupMessage"><span class="material-icons-outlined">east</span></button>
+
+                    <p id="searchToSendGroupMessageHeading">Search groups to send message.</p>
+
+                    <div id="searchToSendGroupMessageForm">
+                      <input type="text" placeholder="Type group name to search.">
+                      <button><span class="material-icons-outlined">search</span></button>
+                    </div>
+
+                    <div id="searchToSendGroupMessageForm-output"></div>
+                  </div>
+                <!-- search to send group sms -->
+
+
+                <!-- show message list -->
+                  <div id="showMessageList">
+                    <div id="showMessageList_subHolder">
+
+                    </div>
+                  </div>
+                <!-- show message list -->
+            </div>
+
+            
+            <div id="messengerRightSideHolder">
+              <button id="closeMessengerRightSide"><span class="material-icons-outlined">east</span></button>
+
+              <!-- message main view right side -->
+                <div id="messegeRightSide">               
+
+                </div>
+              <!-- message main view right side -->
+
+              <!-- group dashboard right side -->
+                <div id="groupDashboardRightSide">
+                  <div id="group-Dashboard-header">
+                    <h1>Message Group Dashboard</h1>
+                  </div>
+                  
+                  <div id="group-Dashboard-main-nav">
+                    <div id="group-Dashboard-main-nav-subcontainer">
+                      <div class="group-Dashboard-main-nav-buttons" id="yourGroups">Your Groups</div>
+                      <div class="group-Dashboard-main-nav-buttons" id="createGroup">Create Group</div>
+                      <div class="group-Dashboard-main-nav-buttons" id="findGroup">Find Group</div>
+                    </div>
+                  </div>
+
+                  <div id="group-Dashboard-subcontainer">
+                    
+                  </div>
+                </div>
+              <!-- group dashboard right side -->
+            </div>
+        </div>
+      <!-- messenger panel popup -->
+
+
+      <!-- friends, requests and followers panel popup -->
+        <div id="friendsFollowersRequestsPanel">
+          <button id="closeFriendsFollowersRequestsPanel"><span class="material-icons-outlined">close</span></button>
+
+          <div id="friendsFollowersRequestsPanelHeader">
+            <div id="friendsFollowRequestCenter">
+              <div id="seeFriendsButton" class="freindsFollowRequestHeaderButtonSingle"><span>Friends</span></div>
+              <div id="seeReceiveRequestButton" class="freindsFollowRequestHeaderButtonSingle"><span>Receive Request</span></div>
+              <div id="seeSendRequestButton" class="freindsFollowRequestHeaderButtonSingle"><span>Send Request</span></div>
+              <div id="seeFollowertButton" class="freindsFollowRequestHeaderButtonSingle"><span>Follower</span></div>
+              <div id="seeFollowingtButton" class="freindsFollowRequestHeaderButtonSingle"><span>Following</span></div>
+              <div id="seeFamilyMemberstButton" class="freindsFollowRequestHeaderButtonSingle"><span>Your Close Persons</span></div>
+            </div>
+          </div>
+
+          <div id="friendsFollowersRequestsPanelMainbody">
+
+          </div>
+        </div>
+      <!-- friends, requests and followers panel popup -->
+
+      <!-- active friend list button panel popup -->
+        <div id="activeFreindListButtonSmallDevice">
+            <button id="closeActiveFreindListButtonSmallDevice"><span class="material-icons-outlined">close</span></button>
+        </div>
+      <!-- active friend list button panel popup -->
+
+
+
+      <!-- find people/ people you may know panel popup -->
+        <div id="findPeoplePanel">
+          <button id="closeFindPeoplePanel"><span class="material-icons-outlined">close</span></button>
+        </div>
+      <!-- find people/ people you may know panel popup -->
+
+    
+
+      <!-- call alert popup -->
+        <div id="callAlert">
+          <div id="callerName" style="color: white"></div>
+          <button id="callReceive">Receive</button>        
+          <button id="callReject">Reject</button>
+        </div>
+      <!-- call alert popup -->
+
+
+
+
+      <!-- updateallprofile.js -->
+
+        <!-- preview of new profile pic popup -->
+          <div id="addNewProfileImageWizard">
+            <button id="closeaddNewProfileImageWizard"><span class="material-icons-outlined">close</span></button>
+            <div id="previewAddNewProfileImage">
+              <img src="" alt="" id="previewProfileImgTag">
+            </div>
+            <button id="submitNewProfileImage">Set Profile</button>
+          </div>
+        <!-- preview of new profile pic popup -->
+
+        <!-- pictures all popup -->
+          <div id="allPicturesUpdateProfile">
+            <button id="closeaAllProfileImageWizard"><span class="material-icons-outlined">close</span></button>
+            <div id="subAllPicturesUpdateProfile">
+
+            </div>
+            <div id="uploadProfileFromAlbum">
+              <button>Upload</button>
+            </div>
+          </div>
+        <!-- pictures all popup -->
+
+      <!-- updateallprofile.js -->
+
+    
+
+
+    
+      <div id="subBody">
+
+          <div id="subBodyLeftSide-navigator">
+            <div id="profile-container">
+
+            </div>
+          </div>
+
+          <div id="subBodyRightSide-maincontent">
+                
+          </div>
+
+      </div>
+
+    <!-- body -->
+
+    
+</body>
+<script>
+  // main.ejs
+    // variables
+      let myId = null
+      let profileFromMongoDB = null
+      let updatesOfClosePersonsStatus_main = null
+    // variables
+      
+    // profile description
+    let changedInProfilePicInProfileDescription = true
+
+    function rePositionProfileDescription(){
+        const getProfileDescription = document.getElementById('profileDescription')
+
+        const getProfileDescriptionWidth = getProfileDescription.offsetWidth
+
+        const getProfileDescriptionOuterWidth = window.innerWidth - getProfileDescriptionWidth
+
+        const getProfileDescriptionOuterWidthHalf = getProfileDescriptionOuterWidth / 2
+
+        getProfileDescription.style.left = getProfileDescriptionOuterWidthHalf + 'px'
+    }
+    rePositionProfileDescription()
+    // profile description
+
+    //messenger
+      //cneter
+      function stePositionMessenger(){
+        const messengerPanel = document.getElementById( 'messengerPanel' )
+
+        const getMessengerOuterWidth = window.innerWidth - document.getElementById('messengerPanel').offsetWidth
+        const getMessengerOuterWidthHalf = getMessengerOuterWidth /2
+
+        
+        messengerPanel.style.left = getMessengerOuterWidthHalf + 'px'
+      }
+      stePositionMessenger()
+      //center
+
+      let isMessengerDisplay = false
+      function resezizeMessenger(){
+        const messengerPanel = document.getElementById( 'messengerPanel' )
+
+        const setMessengerHeight = window.innerHeight - 60
+
+        if( isMessengerDisplay == true ){        
+            messengerPanel.style.height = setMessengerHeight + 'px'
+
+            if(messengerPanel.offsetWidth <= 799){
+              const deductWidth = messengerPanel.offsetWidth - 20
+              
+              const checkHeight = setInterval(()=>{
+                if(messengerPanel.offsetHeight > 0){
+                  clearInterval( checkHeight )
+
+                  const deductHeight = messengerPanel.offsetHeight - 20
+                  document.getElementById('messegeLeftSide').style.height = deductHeight + 'px'
+                  document.getElementById('messengerRightSideHolder').style.height = deductHeight + 'px'
+                }
+              }, 1000)              
+
+              document.getElementById('messegeLeftSide').style.width = deductWidth + 'px'              
+              document.getElementById('messegeLeftSide').style.margin = '10px'
+
+              document.getElementById('messengerRightSideHolder').style.width = deductWidth + 'px'              
+              document.getElementById('messengerRightSideHolder').style.margin = '10px'
+
+              document.getElementById('messengerRightSideHolder').style.right = '-810px' // defulty hide right side on small device
+
+              document.querySelector('#searchToSendMessage').style.right = '-1100px'
+              document.querySelector('#searchToSendGroupMessage').style.left = '-1100px'
+              
+            } else {
+              document.getElementById('messegeLeftSide').style.height = '100%'
+              document.getElementById('messegeLeftSide').style.width = '39.5%'              
+              document.getElementById('messegeLeftSide').style.margin = 0
+
+              document.getElementById('messengerRightSideHolder').style.height = '100%'
+              document.getElementById('messengerRightSideHolder').style.width = '59.5%'              
+              document.getElementById('messengerRightSideHolder').style.margin = 0
+
+              document.getElementById('messengerRightSideHolder').style.right = 0 // defulty show right side on large device
+
+              document.getElementById('closeMessenger').style.right = 0 // show messenger close button default
+
+              document.querySelector('#searchToSendMessage').style.right = '-500px'
+              document.querySelector('#searchToSendGroupMessage').style.left = '-500px'
+            }
+        }
+      }
+    //messenger
+
+    // friends, request and follower panel
+      let loopEnd = 0
+      let friend_i = 0
+
+      let showFriendsFollowersAndRequestsPanel = false
+      function repositionFriendsRequestsFollowers(){
+        const getFriendsFollowersRequestsPanelWidth = document.querySelector('#friendsFollowersRequestsPanel').offsetWidth
+
+        const outerWidth = window.innerWidth - getFriendsFollowersRequestsPanelWidth
+        const outerWidthHalf = outerWidth / 2
+        document.querySelector('#friendsFollowersRequestsPanel').style.left = outerWidthHalf + 'px'
+
+        const outerHeight = window.innerHeight - 60
+        document.querySelector('#friendsFollowersRequestsPanel').style.height = outerHeight + 'px'
+
+        if( showFriendsFollowersAndRequestsPanel == true ){
+          document.querySelector('#friendsFollowersRequestsPanel').style.top = '55px'
+        }
+
+        // sub body
+        const panelHeight = document.querySelector('#friendsFollowersRequestsPanel').offsetHeight
+        const deductedHeight = panelHeight - 50
+        document.querySelector('#friendsFollowersRequestsPanelMainbody').style.height = deductedHeight + 'px'
+        // sub body
+      }
+      repositionFriendsRequestsFollowers()
+    // friends, request and follower panel
+
+
+    
+    //reposition profile pic preview popup placed in top
+    let displayProfilePreview = false
+    function profilePicReviewBeforeUpload(){
+        const profilePicWizard = document.getElementById('addNewProfileImageWizard')
+
+        if( profilePicWizard ){
+            const getProfilePicWizardWidth = profilePicWizard.offsetWidth
+            const getProfilePicWizardHeight = profilePicWizard.offsetHeight
+
+            const getProfilePicWizardOuterWidth = window.innerWidth - getProfilePicWizardWidth
+            const getMessengerOuterHeight = window.innerHeight - getProfilePicWizardHeight
+
+            const getProfilePicWizardOuterWidthHalf = getProfilePicWizardOuterWidth/2
+            const getMessengerOuterHeightHalf = getMessengerOuterHeight/2
+
+            profilePicWizard.style.left = getProfilePicWizardOuterWidthHalf + 'px'
+            if( displayProfilePreview == true ){
+                profilePicWizard.style.top = getMessengerOuterHeightHalf + 'px'
+            }
+        }
+    }
+    //reposition profile pic preview popup placed in top
+
+    // active friend list buttion
+      const activeFreindListButtonOn = document.querySelector('.freindListOn')
+      const activeFreindListButtonOff = document.querySelector('.freindListOff')
+
+      const grabSubBodyLeftNav = document.getElementById('subBodyLeftSide-navigator')
+      const grabSubBodyRightMaincontent = document.getElementById('subBodyRightSide-maincontent')
+
+      const activeFreindListDropDownSmallDevices = document.getElementById('activeFreindListButtonSmallDevice')
+      
+      let isActiveFriendListPanelOn = true // check is button on
+
+      function onActiveFreindListPanel(){
+        isActiveFriendListPanelOn = true // check is button on
+
+        activeFreindListButtonOn.style.display = 'none'
+        activeFreindListButtonOff.style.display = 'inline-block'
+
+        const getTabHeight = window.innerHeight
+        const deductHeight = getTabHeight - 60
+        grabSubBodyLeftNav.style.height = deductHeight + 'px'
+        grabSubBodyLeftNav.style.width = '230px'
+        grabSubBodyLeftNav.style.borderWidth = '5px'
+
+        grabSubBodyRightMaincontent.style.width = '765px'
+      }
+      function offActiveFreindListPanel(){
+        isActiveFriendListPanelOn = false // check is button on
+
+        activeFreindListButtonOn.style.display = 'inline-block'
+        activeFreindListButtonOff.style.display = 'none'
+
+        grabSubBodyLeftNav.style.width = 0
+        grabSubBodyLeftNav.style.height = 0
+        grabSubBodyLeftNav.style.borderWidth = 0
+
+        grabSubBodyRightMaincontent.style.width = '100%'
+      }
+      function onActiveFreindListPanelForSmallDevice(){
+
+        activeFreindListButtonOn.style.display = 'none'
+        activeFreindListButtonOff.style.display = 'inline-block'
+
+        activeFreindListDropDownSmallDevices.style.top = '55px'
+
+      }
+      function offActiveFreindListPanelForSmallDevice(){
+
+        activeFreindListButtonOn.style.display = 'inline-block'
+        activeFreindListButtonOff.style.display = 'none'
+      }
+      
+      function hideAndShowActiveFreindList(){
+        const getTabWidth = window.innerWidth
+        
+        if( getTabWidth >= 1000){
+          if( isActiveFriendListPanelOn == true ){ // check is button on
+            onActiveFreindListPanel()
+          }          
+
+          activeFreindListButtonOn.onclick = onActiveFreindListPanel  
+          activeFreindListButtonOff.onclick = offActiveFreindListPanel
+        } else {
+          offActiveFreindListPanel()  
+
+          // repositon active freind list drop down small device
+          const getTabHeight = window.innerHeight
+          const deductHeight = getTabHeight - 60
+          activeFreindListDropDownSmallDevices.style.height = deductHeight + 'px'
+
+          const dropDownListWidth = activeFreindListDropDownSmallDevices.offsetWidth
+          const getDropDownOuterWidth = window.innerWidth - dropDownListWidth
+          const getDropDownOuterWidthHalf = getDropDownOuterWidth/2
+          activeFreindListDropDownSmallDevices.style.left = getDropDownOuterWidthHalf + 'px'
+          // repositon active freind list drop down small device
+
+          activeFreindListButtonOn.onclick = onActiveFreindListPanelForSmallDevice  
+          activeFreindListButtonOff.onclick = offActiveFreindListPanelForSmallDevice
+        }
+      }
+      hideAndShowActiveFreindList()
+    // active friend list buttion
+
+
+    // find people / people you may know
+      //cneter
+      function stePositionFindPeople(){
+        const findPeoplePanel = document.getElementById( 'findPeoplePanel' )
+
+        const getFindPeoplePanelOuterWidth = window.innerWidth - findPeoplePanel.offsetWidth
+        const getFindPeoplePanelOuterWidthHalf = getFindPeoplePanelOuterWidth /2
+
+        
+        findPeoplePanel.style.left = getFindPeoplePanelOuterWidthHalf + 'px'
+      }
+      stePositionFindPeople()
+      //center
+
+      let isFindPeoplePanelDisplay = false
+      function resizeFindPeoplePanel(){
+        const findPeoplePanel = document.getElementById( 'findPeoplePanel' )
+
+        const setfindPeoplePanelHeight = window.innerHeight - 60
+
+        if( isFindPeoplePanelDisplay == true ){        
+            findPeoplePanel.style.height = setfindPeoplePanelHeight + 'px'
+
+            if(findPeoplePanel.offsetWidth <= 799){
+              
+            } else {
+              document.getElementById('closeFindPeoplePanel').style.right = 0 // show messenger close button default
+            }
+        }
+      }
+    // find people / people you may know
+
+
+
+    // all pic preview placed in top
+    let allPicWizardUpdateProfile = false
+    function allPicPreviewUpadateAllProfile(){
+        const allPicWizard = document.getElementById('allPicturesUpdateProfile')
+        if(allPicWizard && allPicWizardUpdateProfile == true ){
+          const setHeight = window.innerHeight - 70
+          allPicWizard.style.height = setHeight + 'px'
+
+          const getAllPicWizardWidth = allPicWizard.offsetWidth
+          const getAllPicWizardHeight = allPicWizard.offsetHeight
+
+          const getAllPicWizardOuterWidth = window.innerWidth - getAllPicWizardWidth
+          const getAllPicWizardOuterHeight = window.innerHeight - getAllPicWizardHeight
+
+          const getAllPicWizardOuterWidthHalf = getAllPicWizardOuterWidth/2
+          const getAllPicWizardOuterHeightHalf = getAllPicWizardOuterHeight/2
+
+          allPicWizard.style.left = getAllPicWizardOuterWidthHalf + 'px'
+          const addMarginToHeight = getAllPicWizardOuterHeightHalf + 25
+          allPicWizard.style.top = addMarginToHeight + 'px'
+        }
+    }
+    // all pic preview placed in top
+  // main.ejs
+
+
+
+
+
+    // profile.ejs
+      // variables
+      let uiD_profile = null 
+          admin_profile = null
+          freindButton_profile = null
+          cancelButton_profile = null
+          followButton_profile = null
+          messageButton_profile = null
+          audioCallButton_profile = null
+          videoCallButton_profile = null
+          allProfileArea_profile = null
+          profileEditButton_profile = null
+          updatesOfFriendAndFollowerButton_profile = null
+      // variables
+    // profile.ejs
+
+
+
+    // updateProfile.ejs 
+      // variables
+      let Admin_update_profile = null
+          uiD_update_profile = null
+          freindButton_updateProfile = null
+          cancelButton_updateProfile = null
+          messageButton_updateProfile = null
+          audioCallButton_updateProfile = null
+          videoCallButton_updateProfile = null
+          closeUpdateAllProfile_updateProfile = null
+      // variables
+    // updateProfile.ejs
+
+    
+</script>
+
+<script defer src="/firebaseNewMain.bundle.js"></script> <!--         src/firebase_new/main.js          -->
+
+</html>

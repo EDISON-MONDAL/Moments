@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ajax library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <script>
+        let uid = '<%= Uid %>'
+    </script>
+    
+    <title>profile</title>
+    <link rel="stylesheet" href="profile.css">
+    
+</head>
+<body id="body">
+    
+    <div id="controls">
+        <div id="messageIndicator">
+            messages
+        </div>
+        <div id="myProfileLink">
+            <img src="" alt="" id="profilePic">
+            <div id="profileName"></div>
+        </div>
+    </div>
+    <p>Name: <span id="name"></span></p>
+    <p>Email: <span id="email"></span></p>
+
+    <button id="freindButton">Send friend request</button>
+    <button id="cancelButton" style="display: none;">Cancel friend request</button>
+
+    
+    <button id="messaging" style="display: none;">Message</button>
+
+    <div id="timeline">
+        <%- include('headers/createPost') %> 
+    </div>
+
+    <div id="messaging-box">
+        <div id="top-bar">
+            <button id="audioCallButton">Audio Call</button>
+            <button id="videoCallButton">Video Call</button>
+
+            <div id="close">X</div>
+        </div>
+        <form action="" id="messageForm">
+            <input type="text" name="messageText" placeholder="Send a message...">
+            <button id="sendMessage">Send</button>
+        </form>
+    </div>
+
+    
+
+    <div id="callAlert">
+        <span id="alertText" style="color: white"></span>
+        <button id="callReceive">Receive</button>        
+        <button id="callReject">Reject</button>
+    </div>
+
+
+    
+	<script defer src="/profile.bundle.js"></script>
+</body>
+</html>

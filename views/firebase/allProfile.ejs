@@ -1,0 +1,382 @@
+<script>
+    uiD = '<%= Uid %>'
+</script>
+
+
+<div id="allProfileArea">
+    <span class="material-icons-outlined profileEditButton">edit</span>
+
+    <div id="profilePicContainerOnProfilePage">
+        <img src="https://icons.iconarchive.com/icons/papirus-team/papirus-status/512/avatar-default-icon.png" alt="Profile picture" id="profilePicOnProfilePage">
+    </div>
+
+<div id="profileContents">
+
+    <div id="singleProfileInfo" class="neme-holder-profile">
+        <div class="singleProfileSubinfo_one name-title"><span>Name:</span></div> 
+        <span id="name" class="singleProfileSubinfo_two name-maincontent"></span>
+    </div>
+
+    <div id="singleProfileInfo" class="id-holder-profile">
+        <div class="singleProfileSubinfo_one id-title"><span>Id:</span></div> 
+        <span id="id" class="singleProfileSubinfo_two id-maincontent"></span>
+    </div>
+
+
+    <!-- friend and follow button -->
+    <button id="freindButton" style="display: none;">Send friend request</button>
+    <button id="cancelButton" style="display: none;">Cancel friend request</button>
+    <button id="followButton" style="display: none;">Follow</button>
+    <!-- friend and follow button -->
+
+    <!-- call buttons -->
+      <div id="callButtonsHolderProfile">
+        <span id="audioCallButton" class="material-icons-outlined rightSideHeaderControlsButton profileCallButtons" title="voice call">local_phone</span>
+        <span id="videoCallButton" class="material-icons-outlined rightSideHeaderControlsButton profileCallButtons" title="video call">video_camera_front</span>
+        <span id="messaging" class="material-icons-outlined  rightSideHeaderControlsButton profileCallButtons">chat</span>
+      </div>
+    <!-- call buttons -->
+    
+    <!-- profile message box -->
+    <div id="messaging-box">
+        <div id="close">X</div>
+        <!-- header -->
+          <div id="headerBar-messaging-box">
+            <div id="messaging-box-profileNameImageHolder">
+                <div id="imgHolder">
+                    <img src="" alt="profile pic">
+                </div>
+
+                <div id="profile-name">
+                    <div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div id="top-bar">
+                <div id="top-bar-subHolder">
+                    <span id="audioCallButton_profileInbonx" class="material-icons-outlined rightSideHeaderControlsButton profileInboxCallButtons" title="voice call">local_phone</span>
+                    <span id="videoCallButton_profileInbonx" class="material-icons-outlined rightSideHeaderControlsButton profileInboxCallButtons" title="video call">video_camera_front</span>
+                </div>                
+            </div>            
+          </div>
+        <!-- header -->
+
+        <!-- main -->
+          <div id="messaging-box-middle-section">
+            <div id="messaging-box-middle-subSection">
+
+            </div>
+          </div>
+        <!-- main -->
+
+
+        <!-- footer -->
+          <div id="footerSection">
+            <textarea id="profilePersonalInboxTextarea" placeholder="Write messages here..."></textarea>
+            <span class="material-icons-outlined messengerRightSideFooter_sendMessage">send</span>
+          </div>
+        <!-- footer -->
+    </div>
+    <!-- profile message box -->
+
+
+    <div id="singleProfileInfo" class="shortAutobiograph-holder-profile">
+        <div class="singleProfileSubinfo_one shortAutobiograph-title"><span>Short Autobiograph:</span></div> 
+        <span id="shortAutobiograph" class="singleProfileSubinfo_two shortAutobiograph-maincontent"></span>
+    </div>
+
+    <div id="singleProfileInfo" class="livingPlace-holder-profile">
+        <div class="singleProfileSubinfo_one livingPlace-title"><span>Living Place:</span></div> 
+        <span id="livingPlace" class="singleProfileSubinfo_two livingPlace-maincontent"></span>
+    </div>
+
+    <div id="singleProfileInfo" class="birthPlace-holder-profile">
+        <div class="singleProfileSubinfo_one birthPlace-title"><span>Birth Place:</span></div> 
+        <span id="birthPlace" class="singleProfileSubinfo_two birthPlace-maincontent"></span>
+    </div>
+
+    <div id="singleProfileInfo" class="birthDate-holder-profile">
+        <div class="singleProfileSubinfo_one birthDate-title"><span>Birth Date:</span></div> 
+        <span id="birthDate" class="singleProfileSubinfo_two birthDate-maincontent"></span>
+    </div>
+
+    <div id="singleProfileInfo" class="phoneNumber-holder-profile">
+        <div class="singleProfileSubinfo_one phoneNumber-title"><span>Phone Number:</span></div> 
+        <span id="phoneNumber" class="singleProfileSubinfo_two phoneNumber-maincontent"></span>
+    </div>
+
+    <div id="singleProfileInfo" class="email-holder-profile">
+        <div class="singleProfileSubinfo_one email-title"><span>Email:</span></div> 
+        <span id="email" class="singleProfileSubinfo_two email-maincontent"></span>
+    </div>
+
+    <div id="singleProfileInfo" class="website-holder-profile">
+        <div class="singleProfileSubinfo_one website-title"><span>Website:</span></div>
+        <span class="all-website-contents">
+            <div id="title-one" class="per-website-title"><span></span></div>
+            <span id="website-one" class="singleProfileSubinfo_two website-maincontent"></span>
+
+            <div id="title-two" class="per-website-title"><span></span></div>
+            <span id="website-two" class="singleProfileSubinfo_two website-maincontent"></span>
+
+            <div id="title-three" class="per-website-title"><span></span></div>
+            <span id="website-three" class="singleProfileSubinfo_two website-maincontent"></span>
+
+            <div id="title-four" class="per-website-title"><span></span></div>
+            <span id="website-four" class="singleProfileSubinfo_two website-maincontent"></span>
+
+            <div id="title-five" class="per-website-title"><span></span></div>
+            <span id="website-five" class="singleProfileSubinfo_two website-maincontent"></span>
+        </span>
+    </div>
+
+    <div id="singleProfileInfo" class="profession-holder-profile">
+        <div class="singleProfileSubinfo_one profession-title"><span>Profession:</span></div> 
+        <span id="profession" class="singleProfileSubinfo_two profession-maincontent"></span>
+    </div>
+
+    <div id="singleProfileInfo" class="education-holder-profile">
+        <div class="singleProfileSubinfo_one education-title"><span>Education:</span></div>
+
+        <span class="all-education-contents">
+
+            <div id="postGraduate-title" class="per-education-level-title"><span>Post Graduate: </span></div>
+            <div id="postGraduate-institution" class="institution-name"><span>Institution: </span></div>
+            <span id="institution-one" class="singleProfileSubinfo_two education-maincontent"></span>
+            <div id="postGraduate-duration" class="institution-duration"><span>Duration: </span></div>
+            <div id="postGraduate-from" class="duration-from">
+                <span>From: </span>
+                <span id="postgraduate-duration-from" class="singleProfileSubinfo_two education-maincontent"></span>
+            </div>
+            <div id="postGraduate-to" class="duration-to">
+                <span>To: </span>
+                <span id="postgraduate-duration-to" class="singleProfileSubinfo_two education-maincontent"></span>
+            </div>
+            <div id="postGraduate-location" class="institution-location"><span>Location: </span></div>
+            <span id="institution-location-one" class="singleProfileSubinfo_two education-maincontent"></span>
+
+
+            <div id="graduate-title" class="per-education-level-title"><span>Graduate: </span></div>
+            <div id="graduate-institution" class="institution-name"><span>Institution: </span></div>
+            <span id="institution-two" class="singleProfileSubinfo_two education-maincontent"></span>
+            <div id="graduate-duration" class="institution-duration"><span>Duration: </span></div>
+            <div id="graduate-from" class="duration-from">
+                <span>From: </span>
+                <span id="graduate-duration-from" class="singleProfileSubinfo_two education-maincontent"></span>
+            </div>
+            <div id="graduate-to" class="duration-to">
+                <span>To: </span>
+                <span id="graduate-duration-to" class="singleProfileSubinfo_two education-maincontent"></span>
+            </div>
+            <div id="graduate-location" class="institution-location"><span>Location: </span></div>
+            <span id="institution-location-two" class="singleProfileSubinfo_two education-maincontent"></span>
+
+
+            <div id="higherSecondary-title" class="per-education-level-title"><span>Higer Secondary: </span></div>
+            <div id="higherSecondary-institution" class="institution-name"><span>Institution: </span></div>
+            <span id="institution-three" class="singleProfileSubinfo_two education-maincontent"></span>
+            <div id="higherSecondary-duration" class="institution-duration"><span>Duration: </span></div>
+            <div id="higherSecondary-from" class="duration-from">
+                <span>From: </span>
+                <span id="higherSecondary-duration-from" class="singleProfileSubinfo_two education-maincontent"></span>
+            </div>
+            <div id="higherSecondary-to" class="duration-to">
+                <span>To: </span>
+                <span id="higherSecondary-duration-to" class="singleProfileSubinfo_two education-maincontent"></span>
+            </div>
+            <div id="higherSecondary-location" class="institution-location"><span>Location: </span></div>
+            <span id="institution-location-three" class="singleProfileSubinfo_two education-maincontent"></span>
+
+
+            <div id="secondary-title" class="per-education-level-title"><span>Secondary: </span></div>
+            <div id="secondary-institution" class="institution-name"><span>Institution: </span></div>
+            <span id="institution-four" class="singleProfileSubinfo_two education-maincontent"></span>
+            <div id="secondary-duration" class="institution-duration"><span>Duration: </span></div>
+            <div id="secondary-from" class="duration-from">
+                <span>From: </span>
+                <span id="secondary-duration-from" class="singleProfileSubinfo_two education-maincontent"></span>
+            </div>
+            <div id="secondary-to" class="duration-to">
+                <span>To: </span>
+                <span id="secondary-duration-to" class="singleProfileSubinfo_two education-maincontent"></span>
+            </div>
+            <div id="secondary-location" class="institution-location"><span>Location: </span></div>
+            <span id="institution-location-four" class="singleProfileSubinfo_two education-maincontent"></span>
+
+
+            <div id="elementary-title" class="per-education-level-title"><span>Elementary: </span></div>
+            <div id="elementary-institution" class="institution-name"><span>Institution: </span></div>
+            <span id="institution-five" class="singleProfileSubinfo_two education-maincontent"></span>
+            <div id="elementary-duration" class="institution-duration"><span>Duration: </span></div>
+            <div id="elementary-from" class="duration-from">
+                <span>From: </span>
+                <span id="elementary-duration-from" class="singleProfileSubinfo_two education-maincontent"></span>
+            </div>
+            <div id="elementary-to" class="duration-to">
+                <span>To: </span>
+                <span id="elementary-duration-to" class="singleProfileSubinfo_two education-maincontent"></span>
+            </div>
+            <div id="elementary-location" class="institution-location"><span>Location: </span></div>
+            <span id="institution-location-five" class="singleProfileSubinfo_two education-maincontent"></span>
+
+        </span>
+    </div>
+
+    <div id="singleProfileInfo" class="company-holder-profile">
+        <div class="singleProfileSubinfo_one company-title"><span>Company:</span></div>
+
+        <div class="all-company-contents">
+
+            <div id="company-title-one" class="per-education-level-title"><span>One: </span></div>
+            <div id="company-name-one" class="institution-name"><span>Organization: </span></div>
+            <span id="organization-one" class="singleProfileSubinfo_two company-maincontent"></span>
+            <div id="company-duration-one" class="institution-duration"><span>Duration: </span></div>
+            <div id="company-from-one" class="duration-from">
+                <span>From: </span>
+                <span id="organization-one-from" class="singleProfileSubinfo_two company-maincontent"></span>
+            </div>
+            <div id="company-to-one" class="duration-to">
+                <span>To: </span>
+                <span id="organization-one-to" class="singleProfileSubinfo_two company-maincontent"></span>
+            </div>
+            <div id="company-location-one" class="institution-location"><span>Location: </span></div>
+            <span id="organization-one-location" class="singleProfileSubinfo_two company-maincontent"></span>
+
+
+            <div id="company-title-two" class="per-education-level-title"><span>Two: </span></div>
+            <div id="company-name-two" class="institution-name"><span>Organization: </span></div>
+            <span id="organization-two" class="singleProfileSubinfo_two company-maincontent"></span>
+            <div id="company-duration-two" class="institution-duration"><span>Duration: </span></div>
+            <div id="company-from-two" class="duration-from">
+                <span>From: </span>
+                <span id="organization-two-from" class="singleProfileSubinfo_two company-maincontent"></span>
+            </div>
+            <div id="company-to-two" class="duration-to">
+                <span>To: </span>
+                <span id="organization-two-to" class="singleProfileSubinfo_two company-maincontent"></span>
+            </div>
+            <div id="company-location-two" class="institution-location"><span>Location: </span></div>
+            <span id="organization-two-location" class="singleProfileSubinfo_two company-maincontent"></span>
+
+
+            <div id="company-title-three" class="per-education-level-title"><span>Three: </span></div>
+            <div id="company-name-three" class="institution-name"><span>Organization: </span></div>
+            <span id="organization-three" class="singleProfileSubinfo_two company-maincontent"></span>
+            <div id="company-duration-three" class="institution-duration"><span>Duration: </span></div>
+            <div id="company-from-three" class="duration-from">
+                <span>From: </span>
+                <span id="organization-three-from" class="singleProfileSubinfo_two company-maincontent"></span>
+            </div>
+            <div id="company-to-three" class="duration-to">
+                <span>To: </span>
+                <span id="organization-three-to" class="singleProfileSubinfo_two company-maincontent"></span>
+            </div>
+            <div id="company-location-three" class="institution-location"><span>Location: </span></div>
+            <span id="organization-three-location" class="singleProfileSubinfo_two company-maincontent"></span>
+
+        </div>
+    </div>
+
+    <div id="singleProfileInfo" class="business-holder-profile">
+        <div class="singleProfileSubinfo_one business-title"><span>Business:</span></div>
+
+        <div class="all-business-contents">
+
+            <div id="business-title-one" class="per-education-level-title"><span>One: </span></div>
+            <div id="business-name-one" class="institution-name"><span>Name: </span></div>
+            <span id="business-one" class="singleProfileSubinfo_two business-maincontent"></span>
+            <div id="business-duration-one" class="institution-duration"><span>Duration: </span></div>
+            <div id="business-from-one" class="duration-from">
+                <span>From: </span>
+                <span id="business-profile-one-from" class="singleProfileSubinfo_two business-maincontent"></span>
+            </div>
+            <div id="business-to-one" class="duration-to">
+                <span>To: </span>
+                <span id="business-profile-one-to" class="singleProfileSubinfo_two business-maincontent"></span>
+            </div>
+            <div id="business-location-one" class="institution-location"><span>Location: </span></div>
+            <span id="business-one-location" class="singleProfileSubinfo_two business-maincontent"></span>
+
+
+            <div id="business-title-two" class="per-education-level-title"><span>Two: </span></div>
+            <div id="business-name-two" class="institution-name"><span>Name: </span></div>
+            <span id="business-two" class="singleProfileSubinfo_two business-maincontent"></span>
+            <div id="business-duration-two" class="institution-duration"><span>Duration: </span></div>
+            <div id="business-from-two" class="duration-from">
+                <span>From: </span>
+                <span id="business-profile-two-from" class="singleProfileSubinfo_two business-maincontent"></span>
+            </div>
+            <div id="business-to-two" class="duration-to">
+                <span>To: </span>
+                <span id="business-profile-two-to" class="singleProfileSubinfo_two business-maincontent"></span>
+            </div>
+            <div id="business-location-two" class="institution-location"><span>Location: </span></div>
+            <span id="business-two-location" class="singleProfileSubinfo_two business-maincontent"></span>
+
+
+            <div id="business-title-three" class="per-education-level-title"><span>Three: </span></div>
+            <div id="business-name-three" class="institution-name"><span>Name: </span></div>
+            <span id="business-three" class="singleProfileSubinfo_two business-maincontent"></span>
+            <div id="business-duration-three" class="institution-duration"><span>Duration: </span></div>
+            <div id="business-from-three" class="duration-from">
+                <span>From: </span>
+                <span id="business-profile-three-from" class="singleProfileSubinfo_two business-maincontent"></span>
+            </div>
+            <div id="business-to-three" class="duration-to">
+                <span>To: </span>
+                <span id="business-profile-three-to" class="singleProfileSubinfo_two business-maincontent"></span>
+            </div>
+            <div id="business-location-three" class="institution-location"><span>Location: </span></div>
+            <span id="business-three-location" class="singleProfileSubinfo_two business-maincontent"></span>
+
+        </div>
+    </div>
+
+    <div id="singleProfileInfo" class="passion-holder-profile">
+        <div class="singleProfileSubinfo_one passion-title"><span>Passion:</span></div> 
+        <span id="passion" class="singleProfileSubinfo_two passion-maincontent"></span>
+    </div>
+
+    <div id="singleProfileInfo" class="religion-holder-profile">
+        <div class="singleProfileSubinfo_one religion-title"><span>Religion:</span></div> 
+        <span id="religion" class="singleProfileSubinfo_two religion-maincontent"></span>
+    </div>
+
+    <div id="singleProfileInfo" class="politics-holder-profile">
+        <div class="singleProfileSubinfo_one politics-title"><span>Politics:</span></div> 
+        <span id="politics" class="singleProfileSubinfo_two politics-maincontent"></span>
+    </div>
+    
+    
+    
+    
+    <p>Followers: </p>
+    <p>Family Members: </p>
+
+
+
+    
+
+
+
+
+
+    
+    
+
+
+    <div id="timeline">
+        <%- include('headers/createPost') %> 
+    </div>
+
+    
+</div>   
+</div>
+    
+
+
+    
+
+<script defer src="/profile.bundle.js"></script>

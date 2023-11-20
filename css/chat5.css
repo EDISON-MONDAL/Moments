@@ -1,0 +1,504 @@
+* {
+  font-family: Arial, Verdana, Helvetica, Geneva, sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+#buttons {
+  width: 100%;
+  height: 40px;
+  background-color: rgb(105, 108, 105);
+  position: fixed;
+  bottom: 0;
+  z-index: -100;
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+
+#buttonsSubDiv {
+  width: 550px;
+  height: 100%;
+  background-color: rgba(250, 235, 215, 0.127);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.select {
+  float: left;
+}
+
+.material-icons-outlined {
+  cursor: pointer;
+}
+
+.md-36 { font-size: 36px; }
+
+.mic_off, .volume_off, .videocam_off, .arrow_drop_down {
+  display: none;
+}
+
+
+
+
+
+
+
+.selectors_contain {
+  display: inline-block;
+}
+
+.selector_embade {
+  background-color: rgb(105, 108, 105);
+  padding: 5px;
+  border-radius: 0 5px 0 5px;
+  position: absolute;
+  bottom: 60px;
+  left: 5px;
+  right: 5px;
+  max-width: 600px;
+}
+
+.audio_source, .audio_output, .video_source{ 
+  display: none;
+}
+
+.selector_embade span {
+  color: white;
+}
+
+.arrow_drop_up {
+  cursor: pointer;
+  border-radius: 3px;
+  margin-top: 1px;
+}
+
+.arrow_drop_up:hover {
+  outline-style: solid;
+  outline-width: 1px;
+  outline-color: orange;
+
+  color: greenyellow;
+}
+
+.arrow_drop_down {
+  cursor: pointer;
+  border-radius: 3px;  
+  margin-top: 1px;
+
+  outline-style: solid;
+  outline-width: 1px;
+  outline-color: orange;
+
+  color: coral;
+}
+
+#audioSource, #audioOutput, #videoSource {
+  cursor: pointer;
+  max-width: 100%;
+}
+
+.callButton {
+  float: left;
+}
+
+.makeCall {
+  background-color: greenyellow;
+  width: 35px;
+  height: 35px;
+  border-radius: 50px;
+  border-color: darkorange;
+}
+
+.cutCall {
+  width: 35px;
+  height: 35px;
+  border-radius: 50px;
+  background-color: red;
+  border-color: rgba(234, 255, 0, 0.919);
+  display: none;
+}
+
+.wifi_calling_3:hover {
+  color: white;
+}
+
+
+.perticipents {
+  float: left;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.perticipents_number {
+  position: absolute;
+  bottom: 0;
+  background-color: rgba(128, 128, 128, 0.8);
+  color: white;
+  border-radius: 10px;
+  padding: 2px;
+  font-size: 10px;
+}
+
+.perticipents_panal {
+  position: absolute;
+  right: 0;
+  background-color: rgb(105, 108, 105);
+  width: 100%;
+  max-width: 350px;
+  display: none;   
+}
+
+.person_add, .person_close{
+  position: absolute;
+  bottom: 0;
+  left: 5px;
+}
+
+.person_close{
+  display: none;
+  color: coral;
+}
+
+.panelBox{
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.imgHolderDiv{
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  border: 1px solid yellow;
+  float: left;
+  overflow: hidden;
+}
+
+.imgHolder{
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+.altTextParticipentsPanel{
+  color: azure;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  margin-top: 8px;
+  font-size: 30px;
+  display: none;
+}
+
+.panelName{
+  color: yellow;
+  margin-left: 55px;
+  max-width: 100%;
+  overflow: hidden;
+  cursor: default;
+  display: block;
+  box-sizing: border-box;
+}
+
+#myMic, #myMicOff, #myCam, #myCamOff{
+  font-size: 28px;
+  margin-top: 5px;
+}
+
+.addMember{
+  width: 100%;
+  max-width: 350px;
+  position: absolute;
+  top: 5px;
+  /*background-color: rgb(105, 108, 105);*/
+  background-color: azure;
+  padding: 5px;
+  cursor: default;
+  overflow: hidden;
+  display: none;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+
+.add_member_panal {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+.mamber_cancel{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: orangered;
+}
+
+#profileSearchField {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 3px;
+  margin-top: 5px;
+}
+
+#addMemberSearchButton{
+  border: none;
+  background-color: rgb(246, 246, 4);
+  padding: 3px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: 5px;
+}
+
+#searchedIdContainer {
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.searchedPeerBox{
+  width: 100%;
+  background-image: linear-gradient(to bottom, rgba(7, 7, 7, 0.192), rgba(255, 255, 255, 0), rgba(7, 7, 7, 0.192) );
+  height: 52px;
+  margin-bottom: 5px;
+}
+
+.searchedPeerBoxImg {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  border: 1px solid yellow;
+  float: left;
+}
+
+.searchedPeerName{
+  color: yellow;
+  margin-left: 55px;
+  max-width: 100%;
+  height: 20px;
+  overflow: hidden;
+  cursor: default;
+  display: block;
+  box-sizing: border-box;
+}
+
+.searchedPeerMessages {
+  margin-left: 5px;
+}
+
+.addPeerButton, .cutButton{
+  border: none;
+  outline: none;
+  background-color: greenyellow;
+  padding: 5px 15px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.cutButton{
+  background-color: red;
+}
+
+
+
+.sharescreen, .screen_share_active {
+  float: left;
+}
+
+.screen_share_active {
+  display: none;
+  color: greenyellow;
+}
+
+#screenRecorder{
+  float: left;
+  margin-left: 10px;
+  
+}
+
+.video_file_on {
+  color: greenyellow;
+  display: none;
+}
+
+#next_previous_nav{
+  background-color: rgba(105, 108, 105, .5);
+  border-radius: 50px;
+  width: 93px;
+  padding: 5px;
+  display: none;
+  position: absolute;
+  bottom: 41px;
+  right: 5px;
+}
+
+body:hover #next_previous_nav{
+ display: inline-block;
+}
+
+
+
+.arrow_back_ios_new, .arrow_forward_ios {
+  display: inline-block;
+  padding: 10px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.arrow_back_ios_new:hover, .arrow_forward_ios:hover {
+  color: azure;
+  background-color: rgba(236, 104, 10, 0.248);
+}
+
+#recordStreamControlar {
+  position: absolute;
+  top: 30px;
+  width: 100%;
+  max-width: 300px;
+  height: 100%;
+  max-height: 250px;
+  background-color: azure;
+  border-radius: 5px;
+  display: none;
+}
+
+#codecPreferences {
+  display: none;
+}
+
+#recorded{
+  width: 100%;
+  height: 200px;
+  margin-top: 10px;
+}
+
+#saveRecord, #cancelRecord{
+  width: 50%;
+  float: left;
+  border: none;
+  height: 30px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+#saveRecord {
+  background-color: chartreuse;
+}
+
+#cancelRecord{
+  background-color: crimson;
+}
+
+
+
+#video_frames_warnings {
+  width: 100%;
+  background-color: aquamarine;
+  position: relative;
+  z-index: -999;
+}
+
+#alertMessage {
+  width: 96%;
+  max-width: 600px;
+  height: 120px;
+  background-color: rgba(105, 108, 105, 0.956);
+  position: absolute;
+  z-index: 1000;
+  border-radius: 5px;
+  text-align: center;
+  display: none;
+}
+
+#alertMessage:hover {
+  background-color: red;
+}
+
+#alertMessageClose {
+  position: absolute;
+  top: -15px;
+  right: 5px;
+  border: 2px solid white;
+  background-color: red;
+  border-radius: 50px;
+  width: 25px;
+  height: 25px;
+  padding: 2.5px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: all 1s ease-in-out;
+}
+
+#alertMessageClose:hover {
+  color: yellow;
+}
+
+.videos_holder_and_profile {
+  background-color: blue;
+  position: relative;
+  overflow: hidden;
+  float: left;
+}
+
+#videos_holder_localVideo{
+  width: 100%;
+  height: 100%;
+}
+
+#localVideo, .remoteVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.holder_name {
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, .6);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  font-size: 12px;
+  padding: 2px;
+  margin-left: 5px;
+  border-radius: 5px 5px 0 0;
+  display: none;
+}
+
+.holder_nameBig{
+  font-size: 30px;
+  font-weight: bold;
+  color: azure;
+  display: none;
+  text-align: center;
+  display: inline-block;
+  width: 100%;  
+  display: none;
+}
+
+#localAudio, .remoteAudio {
+  width: 100%;
+  display: none;
+}
+
+/* For smartphone devices */
+@media ( max-width:480px ) {
+  
+
+  
+}
+/* For smartphone devices */
+
+/* For Tab devices */
+@media ( min-width:481px ) and ( max-width:999px ) {
+  
+}
+/* For Tab devices */
+
+/* For pc devices */
+@media ( min-width:1001px ) {
+  
+}
+/* For pc devices */

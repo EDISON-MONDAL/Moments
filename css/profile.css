@@ -1,0 +1,714 @@
+#allProfileArea {    
+    position: relative;
+}
+
+.profileEditButton {
+    display: inline-block;
+    background-color: rgb(244, 137, 137);
+    font-size: 0;
+    padding: 0 ;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    transition: all 1s ease-in-out;
+}
+
+.profileEditButton:hover {    
+    color: white;
+}
+
+#profilePicContainerOnProfilePage {
+    width: 100%;
+    height: 200px;
+    transition: all 1s ease-in-out;
+}
+
+#profilePicOnProfilePage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: all 1s ease-in-out;
+}
+
+#profileContents {
+    box-sizing: border-box;
+    margin: 5px;
+    margin-top: 0;
+    border: 1px solid rgb(8, 8, 8);
+    border-top: 0;
+    padding-top: 5px;
+}
+
+/* single topic */
+#singleProfileInfo {
+    width: 98%;
+    margin: 5px auto;
+    border-bottom: 1px solid transparent; /* set border width and color to transparent */
+    border-image: linear-gradient(to right, rgba(255, 166, 0, 0.202), rgb(255, 166, 0), rgba(255, 166, 0, 0.202)); /* set linear gradient as border image */
+    border-image-slice: 1; /* specify how to slice the border image */
+    /*background-color: chartreuse;*/
+    text-align: center;
+    display: none;
+}
+
+.singleProfileSubinfo_one {
+    /*background-color: aqua;*/    
+    padding: 10px;
+    box-sizing: border-box;
+}
+.singleProfileSubinfo_one span {
+    /*background-color: blue;*/
+    display: inline-block;
+}
+
+.singleProfileSubinfo_two {
+    background-color: rgb(254, 254, 254);
+    padding: 10px;
+    box-sizing: border-box;
+    box-shadow: inset 0 0 5px 1px rgba(209, 209, 209, 0.988)
+}
+
+.neme-holder-profile, .id-holder-profile {
+    display: inline-block !important;
+}
+
+#callButtonsHolderProfile {
+    width: 172px;
+    height: 40px;
+    background-color: rgba(1, 1, 250, 0.268);
+    padding: 0 5px;
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+
+.profileCallButtons {
+    cursor: pointer;
+}
+
+.per-website-title {
+    width: 100%;
+    text-align: center;    
+    margin-top: 5px;
+    display: none;
+}
+
+.per-website-title span {
+    font-size: 16px;
+    background-color: transparent;
+    outline: none;
+    border: 1px solid salmon;
+    border-radius: 5px;
+    padding: 10px 20px;
+    display: inline-block;
+}
+
+#website-one, #website-two, #website-three, #website-four, #website-five {
+    display: none;
+}
+
+.website-holder-profile, .education-holder-profile, .company-holder-profile, .business-holder-profile {
+    padding-bottom: 5px;
+}
+
+.per-education-level-title {
+    font-weight: bold;
+    margin-top: 5px;
+    display: none;
+}
+
+.institution-name, .institution-duration, .duration-from, .duration-to, .institution-location {
+    text-align: left;
+    display: none;
+}
+
+#institution-one, #postgraduate-duration-from, #postgraduate-duration-to, #institution-location-one,
+#institution-two, #graduate-duration-from, #graduate-duration-to, #institution-location-two,
+#institution-three, #higherSecondary-duration-from, #higherSecondary-duration-to, #institution-location-three,
+#institution-four, #secondary-duration-from, #secondary-duration-to, #institution-location-four,
+#institution-five, #elementary-duration-from, #elementary-duration-to, #institution-location-five {
+    display: none;
+}
+
+/* company */
+#organization-one, #organization-one-from, #organization-one-to, #organization-one-location,
+#organization-two, #organization-two-from, #organization-two-to, #organization-two-location,
+#organization-three, #organization-three-from, #organization-three-to, #organization-three-location {
+    display: none;
+}
+/* company */
+
+  /* business */
+    #business-one, #business-profile-one-from, #business-profile-one-to, #business-one-location,
+    #business-two, #business-profile-two-from, #business-profile-two-to, #business-two-location,
+    #business-three, #business-profile-three-from, #business-profile-three-to, #business-three-location {
+        display: none;
+    }
+  /* business */
+/* single topic */
+
+
+
+/* messaging */
+  #messaging-box {
+    width: 300px;
+    height: 400px;
+    display: block !important;
+    position: fixed;
+    left: 5px;
+    bottom: -600px;
+    border: 3px solid rgb(240, 241, 241);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 1s ease-out;
+  }
+  
+  #messaging-box #close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 30px !important;
+    background: red;
+    z-index: 100;
+    text-align: center;
+    padding: 5px;
+    box-sizing: border-box;
+  }
+
+  /* header */
+
+  #headerBar-messaging-box {
+    width: 100%;
+    background-color: darkorange;
+    z-index: 50;
+    position: absolute;
+    top: 0;
+  }
+
+  #messaging-box-profileNameImageHolder {
+    background-color: rgb(187, 220, 20);
+  }
+
+  #messaging-box-profileNameImageHolder #imgHolder {
+    width: 60px;
+    height: 60px;
+    border-radius: 50px;
+    overflow: hidden;
+    border: 3px solid rgb(249, 216, 28);
+    position: absolute;
+    top: 0;
+    z-index: 2;
+  }
+  #messaging-box-profileNameImageHolder #imgHolder img {
+    width: 100%;
+    height: 100%;
+  }
+
+  #messaging-box-profileNameImageHolder #profile-name {
+    background-color: rgb(249, 216, 28);
+    width: 100%;
+    height: 30px; 
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+  }
+  
+
+  #messaging-box-profileNameImageHolder #profile-name div  {    
+    margin-left: 30px;
+    /* background-color: pink; */
+
+    overflow: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    overflow-x: scroll;
+  }
+  #messaging-box-profileNameImageHolder #profile-name div::-webkit-scrollbar {
+    display: none;
+  }
+
+  #messaging-box-profileNameImageHolder #profile-name div div  {
+    /* background-color: blue; */
+    box-sizing: border-box;
+    padding: 5px 30px 5px 5px;
+    width: 300px;
+    margin-left: 30px;
+  }
+
+  #headerBar-messaging-box #top-bar {
+    position: absolute;
+    top: 30px;
+    width: 100%;
+    height: 35px;
+    background: rgba(139, 0, 139, 0.225);
+    overflow: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    overflow-x: scroll;
+  }
+  #headerBar-messaging-box #top-bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  #headerBar-messaging-box #top-bar-subHolder {
+    width: 90px;
+    height: inherit;
+    /* background-color: skyblue; */
+    margin: 0 5px 0 70px;
+    box-sizing: border-box;
+    float: right;
+  }
+
+  .profileInboxCallButtons {
+    margin: 2.5px 5px !important;
+    cursor: pointer;
+  }
+  /* header */
+
+  /* main */
+    #messaging-box-middle-section {
+        width: 100%;
+        height: 100%;
+        background-color: blueviolet;
+        overflow: hidden;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        overflow-y: scroll;
+        transition: all 1s ease-in-out;
+    }
+    #messaging-box-middle-section::-webkit-scrollbar {
+        display: none;
+    }
+
+    #messaging-box-middle-subSection {
+        /* background-color: rgba(127, 255, 212, 0.286); */
+        margin-top: 70px;
+        margin-bottom: 40px;
+        transition: all 1s ease-in-out;
+    }
+
+    #messaging-box-middle-subSection::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    .messageSendAtProfileInbox {
+        display: block !important;
+    }
+  /* main */
+
+  /* footer */
+    #messaging-box #footerSection {
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+    }
+
+    #messaging-box #footerSection #mediaNavBar {
+        width: 40px;
+        height: 80px;
+        background-color: rgba(240, 248, 255, 0.9);
+        position: absolute;
+        top: -130px;
+        left: -50px;
+        z-index: 2;
+        overflow: hidden;
+        border-radius: 50px;
+        text-align: center;
+        transition: all 1s ease-in-out;
+    }
+
+    #messaging-box #footerSection #mediaNavBar .add_photo {
+      margin-top: 10px;
+      display: block;
+    }
+
+    #messaging-box #footerSection #mediaNavBar #personalImages {
+       display: none;
+    }
+
+    /* selected image preview */
+      #messaging-box #footerSection #imagePreview {
+        width: 100%;
+        height: 60px;
+        background-color: rgb(1, 37, 65);
+        position: absolute;
+        top: -95px;
+        left: 400px;
+        z-index: 3;
+        transition: all 1s ease-in-out;       
+      }
+      
+
+      #messaging-box #footerSection #imagePreview .closeMessageBoxImgPreview {
+        display: inline-block;
+        position: absolute;
+        top: -15px;
+        right: 5px;        
+        background-color: red;
+        color: rgb(243, 252, 4);
+        border-radius: 50px;
+      }
+
+      #messaging-box #footerSection #imagePreview #imagePreviewSubSection {
+        height: 100%;
+        width: 100%;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        overflow-x: scroll;
+      }
+      #messaging-box #footerSection #imagePreview #imagePreviewSubSection::-webkit-scrollbar {
+        display: none;
+      }
+
+      #messaging-box #footerSection #imagePreview #imagePreviewSubSection #imagePreviewSubSection2 {
+        height: 100%;
+        width: 700px;
+        /*background-color: #2d00f6;*/
+      }
+
+      #messaging-box #footerSection #imagePreview .personalMessageInbox {
+        width: 60px;
+        height: 60px;
+        box-sizing: border-box;
+        border: 5px solid rgba(255, 123, 0, 0.826);
+        margin-right: 5px;
+      }
+      #messaging-box #footerSection #imagePreview .personalMessageInbox:first-child {
+        margin-left: 5px;
+      }
+    /* selected image preview */
+
+    #messaging-box #addMediaButton {
+        position: absolute;
+        top: -50px;
+        left: 5px;
+        z-index: 2;
+        background: linear-gradient(to bottom right, #eb18da 30%, #f6ee00 50%, #3828e9 70%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    #messaging-box #profilePersonalInboxTextarea {
+      resize: none;
+      position: absolute;
+      bottom: -1px;
+      border-radius: 0 0 5px 5px;
+      width: 100%;
+      height: 35px;
+      border-left: none;
+      border-right: none;
+      border-bottom: none;
+      padding: 10px;
+      box-sizing: border-box;
+      font-size: 14px;
+      outline: none;
+
+      overflow: hidden;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      overflow-y: scroll;
+
+      z-index: 1;
+    }
+    #messaging-box #profilePersonalInboxTextarea::-webkit-scrollbar {
+      display: none;
+    }
+
+    #messaging-box .messengerRightSideFooter_sendMessage {
+      z-index: 2;
+    }
+  /* footer */
+/* messaging */
+
+  
+
+
+
+/* update your profile */
+#updateYourProfile {
+    background-color: aqua;
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 999;
+}
+/* update your profile */
+
+
+
+
+/* For smartphone devices */
+@media ( max-width:480px ) {
+    .singleProfileSubinfo_one {
+      border-bottom: 1px solid transparent; /* set border width and color to transparent */
+      border-image: linear-gradient(to right, rgba(255, 166, 0, 0.202), rgb(255, 166, 0), rgba(255, 166, 0, 0.202)); /* set linear gradient as border image */
+      border-image-slice: 1; /* specify how to slice the border image */
+      display: inline-block;
+    }
+
+    .singleProfileSubinfo_two {
+        display: inline-block;
+        width: 100%;
+        margin-top: 10px;
+        overflow: hidden;
+    }
+
+  
+}
+/* For smartphone devices */
+
+/* For Tab devices */
+@media ( min-width:481px ) and ( max-width:999px ) {
+    .singleProfileSubinfo_one {
+      border-bottom: 1px solid transparent; /* set border width and color to transparent */
+      border-image: linear-gradient(to right, rgba(255, 166, 0, 0.202), rgb(255, 166, 0), rgba(255, 166, 0, 0.202)); /* set linear gradient as border image */
+      border-image-slice: 1; /* specify how to slice the border image */
+      display: inline-block;
+    }
+
+    .singleProfileSubinfo_two {
+        display: inline-block;
+        width: 100%;
+        margin-top: 10px;
+        overflow: hidden;
+    }
+
+}
+/* For Tab devices */
+
+/* For pc devices */
+@media ( min-width:1000px ) {
+    #singleProfileInfo {
+        box-sizing: border-box;
+        margin-left: 1%;
+    }
+    
+    .singleProfileSubinfo_one {
+      border-right: 1px solid transparent; /* set border width and color to transparent */
+      border-image: linear-gradient(to bottom, rgba(255, 166, 0, 0.202), rgb(255, 166, 0), rgba(255, 166, 0, 0.202)); /* set linear gradient as border image */
+      border-image-slice: 1; /* specify how to slice the border image */
+      height: 100%;
+      float: left;
+      overflow: hidden;
+    }
+
+    .singleProfileSubinfo_two {
+        float: left;
+        margin-left: 10px;
+    }
+
+    .name-title {    
+        width: 70px;
+    }
+    
+    .name-maincontent {
+        width: 658px;
+    }
+
+    .id-title {
+        width: 40px;
+    }
+    
+    .id-maincontent {
+        width: 688px;
+    }
+
+    .shortAutobiograph-title {
+        width: 120px;
+    }
+
+    .shortAutobiograph-maincontent {
+        width: 608px;
+    }
+
+    .livingPlace-title {
+        width: 120px;
+    }
+
+    .livingPlace-maincontent {
+        width: 608px;
+    }
+
+    .birthPlace-title {
+        width: 110px;
+    }
+
+    .birthPlace-maincontent {
+        width: 618px;
+    }
+
+    .birthDate-title {
+        width: 100px;
+    }
+
+    .birthDate-maincontent {
+        width: 628px;
+    }
+
+    .phoneNumber-title {
+        width: 135px;
+    }
+
+    .phoneNumber-maincontent {
+        width: 593px;
+    }
+
+    .email-title {
+        width: 70px;
+    }
+
+    .email-maincontent {
+        width: 658px;
+    }
+
+    .website-title {
+        width: 90px;
+    }
+
+    .all-website-contents{        
+        width: 638px;
+        display: inline-block;
+        margin-left: 10px;
+    }
+
+    .website-maincontent {
+        width: inherit;
+        box-sizing: border-box;
+        margin: 10px 0;
+    }
+
+    .per-website-title:first-child{
+        margin-top: 0;
+    }
+
+    .website-maincontent:last-child{
+        margin-bottom: 0;
+    }
+
+    .profession-title {
+        width: 100px;
+    }
+
+    .profession-maincontent {
+        width: 628px;
+    }
+
+    .education-title {
+        width: 100px;
+    }
+
+    .all-education-contents {
+        width: 628px;
+        display: inline-block;
+        margin-left: 10px;
+    }
+
+    .education-maincontent {
+        width: inherit;
+        box-sizing: border-box;
+        margin: 10px 0;
+    }
+
+    .education-maincontent:last-child{
+        margin-bottom: 0;
+    }
+
+    .duration-from {
+        width: 49.5%;        
+        margin-right: .5%;
+        float: left;
+        /*background-color: blueviolet;*/
+    }
+
+    .duration-from span {
+        float: none;
+        width: 100%;
+    }
+
+    .duration-to {
+        width: 49.5%;
+        margin-left: .5%;
+        float: right;
+        /*background-color: brown;*/
+    }
+
+    .duration-to span {
+        float: none;
+        width: 100%;
+    }
+
+    .company-title {
+        width: 100px;
+    }
+
+    .all-company-contents {
+        width: 628px;
+        display: inline-block;
+        margin-left: 10px;
+    }
+
+    .company-maincontent {
+        width: inherit;
+        box-sizing: border-box;
+        margin: 10px 0;
+    }
+
+    .company-maincontent:last-child{
+        margin-bottom: 0;
+    }
+
+    .business-title {
+        width: 100px;
+    }
+
+    .all-business-contents {
+        width: 628px;
+        display: inline-block;
+        margin-left: 10px;
+    }
+
+    .business-maincontent {
+        width: inherit;
+        box-sizing: border-box;
+        margin: 10px 0;
+    }
+
+    .business-maincontent:last-child{
+        margin-bottom: 0;
+    }
+
+    .passion-title {
+        width: 90px;
+    }
+
+    .passion-maincontent {
+        width: 638px;
+    }
+
+    .religion-title {
+        width: 85px;
+    }
+
+    .religion-maincontent {
+        width: 643px;
+    }
+
+    .politics-title {
+        width: 80px;
+    }
+
+    .politics-maincontent {
+        width: 648px;
+    }
+}
+/* For pc devices */

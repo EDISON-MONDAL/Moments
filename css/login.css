@@ -1,0 +1,231 @@
+* {
+    font-family: Arial, Verdana, Helvetica, Geneva, sans-serif;
+    padding: 0;
+    margin: 0;
+  }
+
+#bodyDeactivate {
+  background-color: rgba(0, 0, 0, 0.55);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  z-index: 999;
+}
+
+h1 {
+  text-align: center;
+}
+
+h2 {
+  background-color: rgba(8, 8, 8, 0.489) ;
+  text-align: center;
+  color: rgb(228, 226, 226);
+  cursor: pointer;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-top: 15px;
+}
+
+h2:hover {
+  color: coral;
+}
+
+h2 a {
+  text-decoration: none;
+  color: inherit;
+}
+
+#leftSideBar, #rightSideBar {
+  margin-top: 10px;
+}
+
+#leftSideBar h3 {
+  text-align: center;
+}
+
+#leftSideBar {
+  background-color: rgba(255, 0, 0, 0.084);
+  position: relative;
+  height: 320px;
+  overflow: hidden;
+}
+
+.formsContainer {
+  width: 95%;
+  margin: 10px 2.5%;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  background-color: rgb(255, 247, 0);  
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 1s ease-in-out;
+}
+
+#signinFormContainer {
+  left: 600px;
+}
+
+#joinMeetingFormContainer {
+  top: 500px;
+}
+
+#joinMeetingForm input[type="number"], #joinMeetingForm input[type="password"], .login input[type="email"], .login input[type="password"], .signup input[type="email"], .signup input[type="text"], .signup input[type="password"]{
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.formsContainer button {
+  border: none;
+  cursor: pointer;
+  padding: 5px 10px;
+  font-size: 16px;
+  margin-top: 10px;
+  background-image: linear-gradient(to bottom, rgb(224, 224, 224), rgba(255, 255, 255, 0), rgb(224, 224, 224) );
+  color: gray;
+}
+
+
+
+.formsContainer button:hover {
+  color: orangered;
+}
+
+#quickUserConfirmDiv, #email-varification-prompt {
+  background-color: rgb(196, 194, 194);
+  border-radius: 10px;
+  clear: both;
+  box-sizing: border-box;
+  padding: 10px;
+  position: fixed;
+  color: rgb(249, 219, 123);
+  font-size: 18px;
+  z-index: 1000;
+  text-align: center;
+  transition: all 1s ease-in-out;
+
+  width: 100%;
+  max-width: 700px;
+}
+#quickUserConfirmDiv {
+  bottom: -500px;
+}
+#email-varification-prompt { 
+  right: -1000px;
+}
+
+#email-varification-prompt button {
+  outline: none;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  background-image: repeating-linear-gradient(to bottom, rgba(0, 251, 243, 0.773), rgb(35, 212, 206), rgba(0, 251, 243, 0.773)) ;
+}
+
+#rightSideBar{
+  background-color: rgb(228, 231, 231);
+}
+
+.personBox{
+  width: 95%;
+  margin: 10px 2.5%;
+  background-color: beige;
+  height: 60px;
+  position: relative;
+  overflow: hidden;
+
+}
+
+.personBoxImgHolder {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+
+.personBoxName{
+  cursor: pointer;
+  position: absolute;
+  top: 5px;
+  left: 60px;
+  height: 35px;
+}
+
+.currentLogedIn {
+  position: absolute;
+  left: 60px;
+  bottom: 5px;
+}
+
+.personBoxImgHolder {
+  cursor: pointer;
+}
+
+.personBoxImg_ {
+  width: 100%;
+  height: 100%;
+}
+
+.deleteButton_ {
+  cursor: pointer;
+  background-color: crimson;
+  position: absolute;
+  top: 7px;
+  right: 5px;
+  padding: 10px;
+}
+
+.deleteButton_:hover {
+  color: white;
+}
+
+
+
+
+
+/* For smartphone devices */
+@media ( max-width:480px ) {
+  
+
+}
+/* For smartphone devices */
+
+/* For Tab devices */
+@media ( min-width:481px ) and ( max-width:999px ) {
+  
+}
+/* For Tab devices */
+
+/* For pc devices */
+@media ( min-width:1001px ) {
+  #subBody {
+    width: 1000px;
+    margin: 30px auto;
+  }
+
+  h2 {
+    width: 33.33%;
+    float: left;
+    border-right: 1px solid rgb(253, 253, 251);
+    box-sizing: border-box;
+  }
+
+  #leftSideBar, #rightSideBar {
+    width: 490px;
+  }
+
+  #leftSideBar{
+    float: left;
+  }
+
+  #rightSideBar {
+    float: right;
+  }
+}
+/* For pc devices */

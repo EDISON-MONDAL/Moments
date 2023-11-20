@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+
+    <title>demo multer and sharp</title>
+    
+</head>
+<body>
+    <form enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*">
+        <button type="submit">Upload</button>
+      </form>
+
+      <img id="img" src="" alt="" style="width: 300px;">
+        <script>
+
+$('form').submit(function(e) {
+  e.preventDefault(); // prevent the default form submission
+  const formData = new FormData($('form')[0]); // create a FormData object from the form data
+  $.ajax({
+    url: '/uploadd', // your server-side endpoint for handling file uploads
+    type: 'POST',
+    data: formData,
+    processData: false,
+    contentType: false,
+    success: function(data) {
+      //console.log(data)
+      document.getElementById('img').src = "data:image/jpeg;base64,"+data
+    },
+    error: function(xhr, status, error) {
+      console.error('Error uploading file:', error);
+    }
+  });
+});
+        </script>
+    
+</body>
+</html>

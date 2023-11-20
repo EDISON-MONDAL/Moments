@@ -1,0 +1,72 @@
+{
+  "name": "moments",
+  "version": "1.0.0",
+  "description": "This is my social media.",
+  "main": "server.js",
+  "engines": {
+    "node": ">=16.x"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EDISON-MONDAL/Moments.git"
+  },
+  "keywords": [
+    "Social",
+    "Media",
+    "Chat",
+    "Vocice",
+    "call",
+    "video",
+    "call",
+    "meeting",
+    "zoom",
+    "meeting",
+    "google",
+    "meet",
+    "messenger",
+    "reels",
+    "shorts",
+    "story",
+    "post",
+    "blog",
+    "page",
+    "share",
+    "comments",
+    "mention."
+  ],
+  "author": "Edison Mondal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EDISON-MONDAL/Moments/issues"
+  },
+  "homepage": "https://github.com/EDISON-MONDAL/Moments#readme",
+  "dependencies": {
+    "axios": "^1.4.0",
+    "body-parser": "^1.20.2",
+    "cheerio": "^1.0.0-rc.12",
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "exif-parser": "^0.1.12",
+    "express": "^4.18.2",
+    "express-fileupload": "^1.4.2",
+    "ffmpeg-static": "^5.2.0",
+    "firebase": "^10.1.0",
+    "firebase-admin": "^11.10.1",
+    "fluent-ffmpeg": "^2.1.2",
+    "mongoose": "^7.4.1",
+    "multer": "^1.4.5-lts.1",
+    "mysql": "^2.18.1",
+    "sharp": "^0.32.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
+  }
+}

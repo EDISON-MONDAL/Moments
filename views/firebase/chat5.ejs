@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to FirebaseRTC</title>
+    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+      rel="stylesheet">
+    <!-- Ajax library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="chat5.css">
+</head>
+<body onunload="clearOldData()" onresize="resize_perticipents_panal(), video_frame_area(), measre_video_holders_and_profile()">
+
+<div id="video_frames_warnings">
+    <div>
+        <span id="currentRoom"></span>
+    </div>
+    
+    <div id="alertMessage">
+        <div id="alertMessageClose">X</div>
+        
+        <div id="alerText"></div>
+        <div id="alerTimeRemaining"></div>
+    </div>
+    
+    <div id="videos_holder_localVideo" class="videos_holder_and_profile">
+        <video id="localVideo" autoplay playsinline muted></video>
+        <audio id="localAudio" controls autoplay muted></audio>
+        <span id="holder_myname" class="holder_name"></span>
+        <span id="holder_mynameBig" class="holder_nameBig"></span>
+    </div>
+</div>
+
+
+
+
+
+<div class="selector_embade audio_source">
+    <span>Use another microphone.</span>
+    <select id="audioSource"></select>
+</div>
+<div class="selector_embade audio_output">
+    <span>Use another Sound Box/Headphone.</span>
+    <select id="audioOutput"></select>
+</div>
+<div class="selector_embade video_source">
+    <span>Use another camera.</span>
+    <select id="videoSource"></select>
+</div>
+
+
+<div id="next_previous_nav">
+    <span id="previous_button" class="material-icons-outlined arrow_back_ios_new">arrow_back_ios_new</span>
+    <span id="next_button" class="material-icons-outlined arrow_forward_ios">arrow_forward_ios</span>
+</div>
+
+
+<div class="perticipents_panal" id="perticipents_panal">
+    <div id="perticipentsNameList">
+
+    </div>  
+    <span class="material-icons-outlined md-36 person_add">person_add</span>  
+    <span class="material-icons-outlined md-36 person_close">person_add</span>  
+</div>
+<div class="addMember">
+    <div class="add_member_panal">
+        <span>Add a new person...</span>
+        <form id="searchProfile">
+            <input type="search" name="searchProfile" id="profileSearchField" placeholder="Type full name...">
+            <button id="addMemberSearchButton">Search</button>
+        </form>
+
+        <div id="searchedIdContainer">
+
+        </div>
+    </div>
+    <span class="material-icons-outlined md-36 mamber_cancel">cancel</span>
+</div>
+
+    <div id="recordStreamControlar">
+        <select id="codecPreferences" disabled ></select>
+        <video id="recorded" playsinline loop controls muted></video>
+        <button id="saveRecord">Save</button>
+        <button id="cancelRecord">Cancel</button>
+    </div>
+
+
+<div id="buttons">
+    <div id="buttonsSubDiv">
+
+    <div class="select">
+        <span class="material-icons-outlined md-36 mic">mic</span>
+        <span class="material-icons-outlined md-36 mic_off">mic_off</span>
+
+        <div class="selectors_contain selectors_contain_one">
+            <span class="material-icons-outlined md-36 arrow_drop_up arrow_drop_up_mic">arrow_drop_up</span>
+            <span class="material-icons-outlined md-36 arrow_drop_down arrow_drop_down_mic">arrow_drop_down</span>            
+        </div>
+    </div>
+
+    <div class="select">
+        <span class="material-icons-outlined md-36 volume_up">volume_up</span>
+        <span class="material-icons-outlined md-36 volume_off">volume_off</span>
+
+        <div class="selectors_contain selectors_contain_three">
+            <span class="material-icons-outlined md-36 arrow_drop_up arrow_drop_up_speaker">arrow_drop_up</span>
+            <span class="material-icons-outlined md-36 arrow_drop_down arrow_drop_down_speaker">arrow_drop_down</span>
+        </div>
+    </div>
+
+    <div class="select">
+        <span class="material-icons-outlined md-36 videocam">videocam</span>
+        <span class="material-icons-outlined md-36 videocam_off">videocam_off</span>
+
+        <div class="selectors_contain selectors_contain_two">
+            <span class="material-icons-outlined md-36 arrow_drop_up arrow_drop_up_cam">arrow_drop_up</span>
+            <span class="material-icons-outlined md-36 arrow_drop_down arrow_drop_down_cam">arrow_drop_down</span>
+        </div>
+    </div>
+    
+
+    <div class="callButton">
+        <button id="call" class="makeCall">
+            <span class="material-icons-outlined wifi_calling_3">wifi_calling_3</span>
+        </button>
+        <button id="callCut" class="cutCall">
+            <span class="material-icons-outlined wifi_calling_3">wifi_calling_3</span>
+        </button>
+    </div>
+
+
+    <div class="perticipents" id="perticipents">
+        <div class="perticipents_number"></div>
+        <span class="material-icons-outlined md-36">reduce_capacity</span>
+        <span class="material-icons-outlined md-36 arrow_drop_up arrow_drop_up_participents">arrow_drop_up</span>
+        <span class="material-icons-outlined md-36 arrow_drop_down arrow_drop_down_participents">arrow_drop_down</span>
+    </div>
+
+
+    <div class="sharescreen" id="sharescreen">
+      <span class="material-icons-outlined md-36 screen_share">screen_share</span>
+      <span class="material-icons-outlined md-36 screen_share_active">screen_share</span>  
+    </div>
+
+    <div id="screenRecorder">
+        <span class="material-icons-outlined md-36 video_file">video_file</span>
+        <span class="material-icons-outlined md-36 video_file_on">video_file</span>
+    </div>
+    
+    </div>
+</div>
+
+
+
+
+
+
+<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+<script defer src="/chat5.bundle.js"></script>
+<script>
+    function clearOldData(){
+        localStorage.setItem("closedVideoOrAudioCall", "yes")
+    }
+
+    //resize & position
+    //    participents panel
+    //    and add member panel
+    //    and record saving box
+    //    and call alert box
+    function resize_perticipents_panal(){
+      const vh = window.innerHeight - 41
+      document.getElementById('perticipents_panal').style.height = vh + 'px'
+      document.getElementById('perticipents_panal').style.marginTop = '-' + vh + 'px'
+      
+      //add member
+      const vh_member = window.innerHeight - 51
+
+      const member_width = document.querySelector( '.addMember' ).offsetWidth
+      const vh_width = (window.innerWidth - member_width) / 2
+      document.querySelector( '.addMember' ).style.height = vh_member + 'px'
+      document.querySelector( '.addMember' ).style.left = vh_width + 'px'
+        //searched id container
+        document.querySelector( '#searchedIdContainer' ).style.height = vh_member - 92 + 'px'
+        //searched id container
+      //add member
+
+      //save screen recorder
+      const saveRecordBoxWidth = document.querySelector( '#recordStreamControlar' ).offsetWidth      
+      const saveRecordBoxHeight = document.querySelector( '#recordStreamControlar' ).offsetHeight
+      const saveRecordBoxOuter_width = (window.innerWidth - saveRecordBoxWidth) / 2
+      document.querySelector( '#recordStreamControlar' ).style.left = saveRecordBoxOuter_width + 'px'
+
+      const saveRecordBoxOuter_Height = ( vh_member - saveRecordBoxHeight) / 2
+      document.querySelector( '#recordStreamControlar' ).style.top = saveRecordBoxOuter_Height + 'px'
+
+      //call timer alert box
+        const getCallAlertBoxWidth = document.querySelector( '#alertMessage' ).offsetWidth
+        const getCallAlertBoxHeight = document.querySelector( '#alertMessage' ).offsetHeight
+
+        const getCallAlertBoxOuterWidth = window.innerWidth - getCallAlertBoxWidth
+        const getCallAlertBoxOuterHeight = window.innerHeight - getCallAlertBoxHeight
+        const getCallAlertBoxOuterWidthHalf = getCallAlertBoxOuterWidth / 2
+        const getCallAlertBoxOuterHeightHalf = getCallAlertBoxOuterHeight / 2
+
+        document.querySelector( '#alertMessage' ).style.left = getCallAlertBoxOuterWidthHalf + 'px'
+        document.querySelector( '#alertMessage' ).style.top = getCallAlertBoxOuterHeightHalf - 41 + 'px'
+      //call timer alert box
+    }
+    resize_perticipents_panal()
+    //    and call alert box
+    //    and record saving box
+    //    and add member panel
+    //resize and position participents panel
+
+
+
+    //adjust video frames container area
+    function video_frame_area(){
+      const vh = window.innerHeight - 40
+      document.getElementById('video_frames_warnings').style.height = vh + 'px'
+    }
+    video_frame_area()
+    //adjust video frames container area
+    
+    //measurement for videos_holder_and_profile
+    let getContainerWidth
+    let getContainerHeight
+    let videoFrameWidths
+    let videoFrameHeights
+    function measre_video_holders_and_profile(){
+      getContainerWidth = document.querySelector('#video_frames_warnings').offsetWidth
+      getContainerHeight = document.querySelector('#video_frames_warnings').offsetHeight
+        /*
+      if( getContainerWidth >= 100){
+        videoFrameWidths = getContainerWidth/4
+        document.querySelector('#videos_holder_localVideo').style.width = videoFrameWidths + 'px'
+      }
+        
+      if( getContainerHeight >= 100){
+        videoFrameHeights = getContainerHeight/5
+        document.querySelector('#videos_holder_localVideo').style.height = videoFrameHeights + 'px'
+      }
+      */
+    }
+    measre_video_holders_and_profile()
+    //measurement for videos_holder_and_profile
+    
+</script>
+
+
+</body>
+</html>

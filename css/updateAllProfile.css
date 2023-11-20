@@ -1,0 +1,570 @@
+
+#updateAllProfileArea {    
+    position: relative;
+}
+
+#closeUpdateAllProfile {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgba(255, 0, 0, 0.826);
+    border: none;
+    outline: none;
+    padding: 5px;
+    cursor: pointer;
+}
+
+
+#profilePicContainerOnProfilePage {
+    width: 100%;
+    height: 200px;
+    transition: all 1s ease-in-out;
+}
+
+#profilePicOnProfilePage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: all 1s ease-in-out;
+}
+
+#profileContents {
+    box-sizing: border-box;
+    margin: 5px;
+    margin-top: 0;
+    border: 1px solid rgb(8, 8, 8);
+    border-top: 0;
+}
+
+#updateProfilePic {
+    padding: 5px 0;
+}
+
+#dpdateProfilePicSubDiv{
+    width: 150px;
+    /*background-color: rgba(255, 105, 180, 0.617);*/
+    margin: 0 auto;
+}
+
+.hideProfilePic, .addNewProfilePic, .reuseProfilePic {
+    padding: 10px;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.hideProfilePic {
+    background-color: rgba(248, 4, 4, 0.315);
+}
+
+#formAddProfileImg {
+    display: inline-block;
+}
+
+.addNewProfilePic {
+    background-color: rgba(4, 248, 89, 0.315);
+}
+
+#selectNewProfileImage{
+    display: none;
+}
+
+.reuseProfilePic {
+    background-color: rgba(244, 248, 4, 0.315);
+}
+
+
+
+
+/* messaging */
+#messaging-box {
+    width: 300px;
+    display: none;
+}
+
+#top-bar {
+    width: 100%;
+    height: 25px;
+    background: skyblue;
+}
+
+#close{
+    position: relative;
+    float: right;
+    width: 30px;
+    height: 100%;
+    background: red;
+}
+
+
+
+/* update your profile */
+#updateYourProfile {
+    background-color: aqua;
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 999;
+}
+/* update your profile */
+
+
+/* all info */
+.profile-info-content {
+    width: 98%;
+    margin: 0 auto;
+    border-bottom: 1px solid transparent; /* set border width and color to transparent */
+    border-image: linear-gradient(to right, rgba(255, 166, 0, 0.202), rgb(255, 166, 0), rgba(255, 166, 0, 0.202)); /* set linear gradient as border image */
+    border-image-slice: 1; /* specify how to slice the border image */
+}
+
+.profile-info-content-one {
+    /*background-color: aqua;*/
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.profile-info-content-one span {    
+    display: inline-block;
+    font-weight: bold;
+}
+
+.profile-info-content-two { 
+    /*background-color: rgb(0, 255, 136);*/
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.profile-info-content-two h2 {
+    margin-top: 5px;
+    font-size: 16px;
+}
+
+
+
+
+#profile-info-content-fullName-input, #profile-info-content-firstName-input, #profile-info-content-middleName-input, #profile-info-content-lastName-input, #profile-info-content-nickName-input, 
+#profile-info-content-autobiograph-input,
+#profile-info-content-village-living-input, #profile-info-content-postOffice-living-input, #profile-info-content-subDistrice-living-input, #profile-info-content-district-living-input, #profile-info-content-country-living-input,
+#profile-info-content-village-birthPlace-input, #profile-info-content-postOffice-birthPlace-input, #profile-info-content-subDistrice-birthPlace-input, #profile-info-content-district-birthPlace-input, #profile-info-content-country-birthPlace-input,
+#profile-info-content-birthDate-input,
+#profile-info-content-phoneNumber-personal-input, #profile-info-content-phoneNumber-personal2-input, #profile-info-content-phoneNumber-home-input, #profile-info-content-phoneNumber-office-input,
+#profile-info-content-email-personal-input, #profile-info-content-email-business-input,
+#profile-info-content-website-one-input, #profile-info-content-website-two-input, #profile-info-content-website-three-input, #profile-info-content-website-four-input, #profile-info-content-website-five-input,
+#profile-info-content-profession-input,
+.education-institution-name-input, .eduction-time-section input, .education-location-textarea,
+#profile-info-content-passion-input,
+#profile-info-content-religion-input,
+#profile-info-content-poitics-input {    
+    box-sizing: border-box;
+    border: none;
+    padding: 5px;
+    outline: none;
+    margin-bottom: 5px;
+    font-size: 16px;
+    overflow: auto;
+}
+
+#profile-info-content-fullName-input {
+    cursor: default;
+}
+
+#profile-info-content-nickName-input {
+    margin-bottom: 0;
+}
+
+#profile-info-content-autobiograph-input, .education-location-textarea {
+    resize: none;
+    margin-bottom: -5px;
+}
+
+.website-link-title {
+    font-size: 16px;
+    background-color: transparent;
+    outline: none;
+    border: 1px solid salmon;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+#updateProfileInfo {
+    background-color: rgba(240, 255, 255, 0.779);
+    padding: 10px;
+    width: 65px;
+    position: absolute;
+    right: -100px;
+    bottom: -100px;
+    border-radius: 10px 0 0 0;
+    text-align: center;
+    transition: all 1s ease-in-out;
+}
+
+#updateProfileInfo button{
+    border: none;
+    background-color: aquamarine;
+    padding: 10px;
+    cursor: pointer;
+}
+/* all info */
+
+
+
+/* For smartphone devices */
+@media ( max-width:480px ) {
+    #profileContents {        
+        padding: 5px;
+        box-sizing: border-box;
+    }
+
+    .profile-info-content {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        padding-bottom: 5px;
+    }
+
+    .profile-info-content-one{
+        padding: 0;
+    }
+  
+    .profile-info-content-one span {
+        border-bottom: 1px solid transparent; /* set border width and color to transparent */
+        border-image: linear-gradient(to right, rgba(255, 166, 0, 0.202), rgb(255, 166, 0), rgba(255, 166, 0, 0.202)); /* set linear gradient as border image */
+        border-image-slice: 1; /* specify how to slice the border image */
+        padding: 10px;
+    }
+
+    .profile-info-content-two {
+        padding: 0;
+        display: block;
+        margin-top: 5px;
+    }
+
+    .profile-info-content-two span{
+        display: block;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .profile-info-content-two input {
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    #profile-info-content-autobiograph-input {
+        width: 100%;
+        height: 700px;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .education-location-textarea {
+        width: 100%;
+        height: 150px;
+    }
+  
+}
+/* For smartphone devices */
+
+/* For Tab devices */
+@media ( min-width:481px ) and ( max-width:999px ) {
+    #profileContents {        
+        padding: 5px;
+        box-sizing: border-box;
+    }
+
+    .profile-info-content {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        padding-bottom: 5px;
+    }
+
+    .profile-info-content-one{
+        padding: 0;
+    }
+  
+    .profile-info-content-one span {
+        border-bottom: 1px solid transparent; /* set border width and color to transparent */
+        border-image: linear-gradient(to right, rgba(255, 166, 0, 0.202), rgb(255, 166, 0), rgba(255, 166, 0, 0.202)); /* set linear gradient as border image */
+        border-image-slice: 1; /* specify how to slice the border image */
+        padding: 10px;
+    }
+
+    .profile-info-content-two {
+        padding: 0;
+        display: block;
+        margin-top: 5px;
+    }
+
+    .profile-info-content-two span{
+        display: block;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .profile-info-content-two input {
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    #profile-info-content-autobiograph-input {
+        width: 100%;
+        height: 400px;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .education-location-textarea {
+        width: 100%;
+        height: 100px;
+    }  
+}
+/* For Tab devices */
+
+/* For pc devices */
+@media ( min-width:1000px ) {
+  .profile-info-content {    
+    overflow: hidden;
+  }
+
+  .profile-info-content-one {
+    border-right: 1px solid transparent; /* set border width and color to transparent */
+    border-image: linear-gradient(to bottom, rgba(255, 166, 0, 0.202), rgb(255, 166, 0), rgba(255, 166, 0, 0.202)); /* set linear gradient as border image */
+    border-image-slice: 1; /* specify how to slice the border image */
+    float: left;
+  }
+
+  .profile-info-content-two { 
+    float: left;
+  }
+
+  .profile-info-content-name-one {
+    height: 282px;    
+    width: 90px;
+  }
+
+  .profile-info-content-name-one span {
+    margin-top: 130px;
+  }
+
+  .profile-info-content-name-two {
+    width: 648px;
+  }
+
+  .profile-info-content-autobiograph-one {
+    width: 120px;
+    height: 400px;
+    transition: all 1s ease-in-out;
+  }
+
+  .profile-info-content-autobiograph-one span {
+    margin-top: 170px;
+  }
+
+  .profile-info-content-autobiograph-two {
+    width: 618px;
+    height: 400px;
+    transition: all 1s ease-in-out;
+  }
+
+  #profile-info-content-autobiograph-input {
+    width: 100%;
+    height: 100%;
+  }
+
+  .profile-info-content-livingPlace-one, .profile-info-content-birthPlace-one {
+    width: 120px;
+    height: 287px;
+  }
+
+  .profile-info-content-livingPlace-one span, .profile-info-content-birthPlace-one span {
+    margin-top: 120px;
+  }
+
+  .profile-info-content-livingPlace-two, .profile-info-content-birthPlace-two {
+    width: 618px;
+  }
+
+  .profile-info-content-birthDate-one {
+    width: 100px;
+    height: 57px;
+  }
+
+  .profile-info-content-birthDate-one span {
+    margin-top: 8px;
+  }
+
+  .profile-info-content-birthDate-two {
+    width: 638px;
+  }
+
+  .profile-info-content-phoneNumber-one {
+    width: 120px;
+    height: 234px;
+  }
+
+  .profile-info-content-phoneNumber-one span {
+    margin-top: 90px;
+  }
+
+  .profile-info-content-phoneNumber-two{
+    width: 618px;
+  }
+
+  .profile-info-content-email-one {
+    width: 90px;
+    height: 127px;
+  }
+
+  .profile-info-content-email-one span {
+    margin-top: 45px;
+  }
+
+  .profile-info-content-email-two {
+    width: 648px;
+  }
+
+  .profile-info-content-website-one {
+    width: 90px;
+    height: 419px;
+  }
+
+  .profile-info-content-website-one span {
+    margin-top: 180px;
+  }
+
+  .website-link-title {
+    width: 250px;
+  }
+
+  .profile-info-content-website-two{
+    width: 648px;
+  }
+
+
+  .profile-info-content-profession-one {
+    width: 110px;
+    height: 54px;
+  }
+
+  .profile-info-content-profession-one span {
+    margin-top: 7px;
+  }
+
+  .profile-info-content-profession-two {
+    width: 628px;
+  }
+
+  .profile-info-content-education-one {
+    width: 100px;
+    height: 1390px;
+  }
+
+  .profile-info-content-education-one span {
+    margin-top: 660px;
+  }
+
+  .profile-info-content-education-two {
+    width: 638px;
+  }
+
+  .eduction-time-section {
+    width: 49%;
+    float: left;
+  }
+  .eduction-time-section-two {
+    width: 49%;
+    float: right;
+  }
+
+  .education-location-textarea {
+    height: 100px;
+  }
+
+  .profile-info-content-company-one{
+    width: 110px;
+    height: 842px;
+  }
+
+  .profile-info-content-company-one span {
+    margin-top: 400px;
+  }
+
+  .profile-info-content-company-two{
+    width: 628px;
+  }
+
+  .profile-info-content-business-one{
+    width: 110px;
+    height: 842px;
+  }
+
+  .profile-info-content-business-one span {
+    margin-top: 400px;
+  }
+
+  .profile-info-content-business-two{
+    width: 628px;
+  }
+
+  .profile-info-content-passion-one{
+    width: 100px;
+    height: 54px;
+  }
+
+  .profile-info-content-passion-one span {
+    margin-top: 8px;
+  }
+
+  .profile-info-content-passion-two{
+    width: 638px;
+  }
+
+  .profile-info-content-religion-one {
+    width: 90px;
+    height: 54px;
+  }
+
+  .profile-info-content-religion-one span {
+    margin-top: 8px;
+  }
+
+  .profile-info-content-religion-two {
+    width: 648px;
+  }
+
+  .profile-info-content-poitics-one {
+    width: 80px;
+    height: 54px;
+  }
+
+  .profile-info-content-poitics-one span {
+    margin-top: 8px;
+  }
+
+  .profile-info-content-poitics-two {
+    width: 658px;
+  }
+
+  #profile-info-content-fullName-input, #profile-info-content-firstName-input, #profile-info-content-middleName-input, #profile-info-content-lastName-input, #profile-info-content-nickName-input,
+  #profile-info-content-village-living-input, #profile-info-content-postOffice-living-input, #profile-info-content-subDistrice-living-input, #profile-info-content-district-living-input, #profile-info-content-country-living-input,
+  #profile-info-content-village-birthPlace-input, #profile-info-content-postOffice-birthPlace-input, #profile-info-content-subDistrice-birthPlace-input, #profile-info-content-district-birthPlace-input, #profile-info-content-country-birthPlace-input,
+  #profile-info-content-birthDate-input,
+  #profile-info-content-phoneNumber-personal-input, #profile-info-content-phoneNumber-personal2-input, #profile-info-content-phoneNumber-home-input, #profile-info-content-phoneNumber-office-input,
+  #profile-info-content-email-personal-input, #profile-info-content-email-business-input,
+  #profile-info-content-website-one-input, #profile-info-content-website-two-input, #profile-info-content-website-three-input, #profile-info-content-website-four-input, #profile-info-content-website-five-input,
+  #profile-info-content-profession-input,
+  .education-institution-name-input, .eduction-time-section input, .education-location-textarea,
+  #profile-info-content-passion-input,
+  #profile-info-content-religion-input,
+  #profile-info-content-poitics-input {
+    width: 100%;
+  }
+}
+/* For pc devices */

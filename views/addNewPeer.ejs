@@ -1,0 +1,43 @@
+<script>
+    const getPeerIds = JSON.parse( localStorage.getItem("peerIdsWebStorage") )
+</script>
+
+<% for( let i = 0; i < showPeerForAdd.length; i++ ) { %>
+    <div id="searchedPeerBox">
+        <img src="data:image/jpg;base64,<%- showPeerForAdd[i].photo %>" alt="">
+        <span> <%- showPeerForAdd[i].name %> </span>
+
+        <script>
+          if( getPeerIds.includes("<%- showPeerForAdd[i].uid %>") == true) {
+            const spanTag = document.createElement("span")
+            spanTag.innerHTML = 'Already in this meeting.'
+            document.querySelector("#searchedIdContainer").appendChild(spanTag)
+          }
+          else {
+            const formTag = document.createElement("form")
+            formTag.setAttribute('id', 'addPeerForm_<%- i %>' )
+            const inputTag = document.createElement("input")
+            inputTag.setAttribute('type', 'hidden' )
+            inputTag.setAttribute('name', 'id' )
+            inputTag.setAttribute('value', '<%- showPeerForAdd[i].uid %>' )
+            const buttonTag = document.createElement("button")
+            buttonTag.setAttribute('type', 'submit' )
+            buttonTag.innerText = 'Add'
+
+            document.querySelector('#searchedIdContainer').appendChild(formTag)
+            document.querySelector('#addPeerForm_<%- i %>').appendChild(inputTag)
+            document.querySelector('#addPeerForm_<%- i %>').appendChild(buttonTag)
+          }
+        </script>
+        
+    </div>
+<% } %>
+
+<script>
+    //const getShowPeerLength = '<%- showPeerForAdd.length %>'   
+    localStorage.setItem("getShowPeerLength", '<%- showPeerForAdd.length %>') 
+    //const myId = '<%- myid %>'
+    localStorage.setItem("myidForAddPeer", '<%- myid %>')
+</script>
+<script src="/addNewPeer.bundle.js"></script>
+

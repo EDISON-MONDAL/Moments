@@ -1,0 +1,420 @@
+<!-- parameters -->
+<script>
+    uiD_update_profile = '<%= uid %>'
+
+    
+    
+    freindButton_updateProfile =  document.getElementById('freindButton') 
+    cancelButton_updateProfile =  document.getElementById('cancelButton') 
+    messageButton_updateProfile = document.getElementById('messaging')
+
+    audioCallButton_updateProfile = document.getElementById('audioCallButton')
+    videoCallButton_updateProfile =  document.getElementById('videoCallButton')
+
+
+    closeUpdateAllProfile_updateProfile = document.querySelector('#closeUpdateAllProfile')
+
+</script>
+<!-- parameters -->
+
+
+
+<div id="updateAllProfileArea">
+    <button id="closeUpdateAllProfile"><span class="material-icons-outlined">close</span></button>
+
+    <div id="profilePicContainerOnProfilePage">
+        <img src="https://icons.iconarchive.com/icons/papirus-team/papirus-status/512/avatar-default-icon.png" alt="Profile picture" id="profilePicOnProfilePage">
+    </div>
+
+<div id="profileContents">
+    <div id="updateProfilePic">
+        <div id="dpdateProfilePicSubDiv">
+            <span class="material-icons-outlined hideProfilePic">no_photography</span>
+            <form action="" id="formAddProfileImg">
+              <input type="file" id="selectNewProfileImage" name="newProfileImgFile" accept="image/*">
+              <label for="selectNewProfileImage">
+                <span class="material-icons-outlined addNewProfilePic">add_photo_alternate</span>
+              </label>
+            </form>
+            <span class="material-icons-outlined reuseProfilePic">collections</span>
+        </div>
+    </div>
+
+    <div id="name-updateProfilepage" class="profile-info-content">
+        <div class="profile-info-content-one profile-info-content-name-one"><span>Name: </span></div>
+        <span class="profile-info-content-two profile-info-content-name-two">
+            <span class="profile-info-content-fullName">Full: </span><input type="text" id="profile-info-content-fullName-input" readonly placeholder="Full name preview.">
+
+            <span class="profile-info-content-firstName">First: </span><input type="text" id="profile-info-content-firstName-input" maxlength="15" required placeholder="Put firstname here within 15 charecters. (required)">
+
+            <span class="profile-info-content-middleName">Middle: </span><input type="text" id="profile-info-content-middleName-input" maxlength="15" placeholder="Put middlename here within 15 charecters. (optional)">
+
+            <span class="profile-info-content-lastName">Last: </span><input type="text" id="profile-info-content-lastName-input" maxlength="15" required placeholder="Put lastname here within 15 charecters. (required)">
+
+            <span class="profile-info-content-nickName">Nick: </span><input type="text" id="profile-info-content-nickName-input" maxlength="15"  placeholder="Put nickname here within 15 charecters. (optional)">
+        </span>
+    </div>
+    <!-- auto biograph -->
+    <div class="profile-info-content">
+        <div class="profile-info-content-one profile-info-content-autobiograph-one"><span>Short Autobiograph: </span></div>
+        <span class="profile-info-content-two profile-info-content-autobiograph-two">
+            <textarea id="profile-info-content-autobiograph-input" maxlength="1500"  placeholder="Put short intro about yourself within 1500 charecters. (optional)"></textarea>
+        </span>
+    </div>
+    <!-- auto biograph -->
+
+    <!-- living place -->
+    <div id="livingPlace-updateProfilepage" class="profile-info-content">
+        <div class="profile-info-content-one profile-info-content-livingPlace-one"><span>Living Place: </span></div>
+        <span class="profile-info-content-two profile-info-content-livingPlace-two">
+            <span class="profile-info-content-village">Village/ City: </span><input type="text" id="profile-info-content-village-living-input"  maxlength="20" placeholder="Put village name here within 20 charecters. (optional)">
+
+            <span class="profile-info-content-postOffice">Post Office: </span><input type="text" id="profile-info-content-postOffice-living-input" maxlength="20" placeholder="Put post office name here within 20 charecters. (optional)">
+
+            <span class="profile-info-content-subDistrict">Sub District: </span><input type="text" id="profile-info-content-subDistrice-living-input" maxlength="20" placeholder="Put sub district name here within 20 charecters. (optional)">
+
+            <span class="profile-info-content-district">District/ State: </span><input type="text" id="profile-info-content-district-living-input" maxlength="20" placeholder="Put district name here within 20 charecters. (optional)">
+
+            <span class="profile-info-content-country">Country: </span><input type="text" id="profile-info-content-country-living-input" maxlength="20"  placeholder="Put country name here within 20 charecters. (optional)">
+        </span>
+    </div>
+    <!-- living place -->
+
+    <!-- birth place -->
+    <div id="birthPlace-updateProfilepage" class="profile-info-content">
+        <div class="profile-info-content-one profile-info-content-birthPlace-one"><span>Birth Place: </span></div>
+        <span class="profile-info-content-two profile-info-content-birthPlace-two">
+            <span class="profile-info-content-village">Village: </span><input type="text" id="profile-info-content-village-birthPlace-input"  maxlength="20" placeholder="Put village name here within 20 charecters. (optional)">
+
+            <span class="profile-info-content-postOffice">Post Office: </span><input type="text" id="profile-info-content-postOffice-birthPlace-input" maxlength="20" placeholder="Put post office name here within 20 charecters. (optional)">
+
+            <span class="profile-info-content-subDistrict">Sub District: </span><input type="text" id="profile-info-content-subDistrice-birthPlace-input" maxlength="20" placeholder="Put sub district name here within 20 charecters. (optional)">
+
+            <span class="profile-info-content-district">District/ State: </span><input type="text" id="profile-info-content-district-birthPlace-input" maxlength="20" placeholder="Put district name here within 20 charecters. (optional)">
+
+            <span class="profile-info-content-country">Country: </span><input type="text" id="profile-info-content-country-birthPlace-input" maxlength="20"  placeholder="Put country name here within 20 charecters. (optional)">
+        </span>
+    </div>
+    <!-- birth place -->
+
+    <!-- birth date -->
+    <div id="birthDate-updateProfilepage" class="profile-info-content">
+        <div class="profile-info-content-one profile-info-content-birthDate-one"><span>Birth Date: </span></div>
+        <span class="profile-info-content-two profile-info-content-birthDate-two">
+            <input type="date" id="profile-info-content-birthDate-input">
+        </span>
+    </div>
+    <!-- birth date -->
+
+    <!-- phone number -->
+    <div id="phoneNumber-updateProfilepage" class="profile-info-content">
+        <div class="profile-info-content-one profile-info-content-phoneNumber-one"><span>Phone Number: </span></div>
+        <span class="profile-info-content-two profile-info-content-phoneNumber-two">
+            <span class="profile-info-content-phoneNumber-personal">Personal: </span><input type="number" id="profile-info-content-phoneNumber-personal-input" placeholder="Put your personal phone number here within 20 numbers. (optional)">
+
+            <span class="profile-info-content-phoneNumber-personal2">Personal two: </span><input type="number" id="profile-info-content-phoneNumber-personal2-input" placeholder="Put your personal two phone number here within 20 numbers. (optional)">
+
+            <span class="profile-info-content-phoneNumber-home">Home: </span><input type="number" id="profile-info-content-phoneNumber-home-input" placeholder="Put your home phone number here within 20 numbers. (optional)">
+
+            <span class="profile-info-content-phoneNumber-office">Office: </span><input type="number" id="profile-info-content-phoneNumber-office-input" placeholder="Put your office phone number here within 20 numbers. (optional)">
+        </span>
+    </div>
+    <!-- phone number -->
+
+    <!-- email -->
+    <div id="email-updateProfilepage" class="profile-info-content">
+        <div class="profile-info-content-one profile-info-content-email-one"><span>Em@il: </span></div>
+        <span class="profile-info-content-two profile-info-content-email-two">
+            <span class="profile-info-content-email-personal">Personal: </span><input type="email" id="profile-info-content-email-personal-input" maxlength="40" placeholder="Put your personal em@il id here within 40 charecters. (optional)">
+
+            <span class="profile-info-content-email-business">Business: </span><input type="email" id="profile-info-content-email-business-input" maxlength="40" placeholder="Put your business em@il id here within 40 charecters. (optional)">
+        </span>
+    </div>
+    <!-- email -->
+
+    <!-- website -->
+    <div id="website-updateProfilepage" class="profile-info-content">
+        <div class="profile-info-content-one profile-info-content-website-one"><span>Website: </span></div>
+        <span class="profile-info-content-two profile-info-content-website-two">
+            <input type="text" value="one" placeholder="Website title." class="profile-info-content-website-title-one website-link-title" maxlength="25">
+            <input type="url" id="profile-info-content-website-one-input" placeholder="Put your first website url here. (optional)">
+
+            <input type="text" value="two" placeholder="Website title." class="profile-info-content-website-title-two website-link-title" maxlength="25">
+            <input type="url" id="profile-info-content-website-two-input" placeholder="Put your second website url here. (optional)">
+
+            <input type="text" value="three" placeholder="Website title." class="profile-info-content-website-title-three website-link-title" maxlength="25">
+            <input type="url" id="profile-info-content-website-three-input" placeholder="Put your third website url here. (optional)">
+
+            <input type="text" value="four" placeholder="Website title." class="profile-info-content-website-title-four website-link-title" maxlength="25">
+            <input type="url" id="profile-info-content-website-four-input" placeholder="Put your fourth website url here. (optional)">
+
+            <input type="text" value="five" placeholder="Website title." class="profile-info-content-website-title-five website-link-title" maxlength="25">
+            <input type="url" id="profile-info-content-website-five-input" placeholder="Put your fifth website url here. (optional)">
+        </span>
+    </div>
+    <!-- website -->
+
+    <!-- profession -->
+    <div id="profession-updateProfilepage" class="profile-info-content">
+        <div class="profile-info-content-one profile-info-content-profession-one"><span>Profession: </span></div>
+        <span class="profile-info-content-two profile-info-content-profession-two">
+            <input type="text" id="profile-info-content-profession-input"  maxlength="50" placeholder="Put your profession or job here, e.g painter, chef, within 50 charecters. (optional)">
+        </span>
+    </div>
+    <!-- profession -->
+    
+    <!-- education -->
+    <div id="education-updateProfilepage" class="profile-info-content">
+        <div class="profile-info-content-one profile-info-content-education-one"><span>Education: </span></div>
+        <span class="profile-info-content-two profile-info-content-education-two">
+            <h2>POST GRADUATE</h2>
+            <span class="profile-info-content-postgraduate-title">Institution: </span>
+            <input type="text" id="profile-info-content-education-postgraduate-institution-input" class="education-institution-name-input"  maxlength="150" placeholder="Put instituion name here within 150 charecters. (optional)">
+
+            <div class="education-duration"><span>Duration: </span></div>
+            <div id="postgraduate-from" class="eduction-time-section">
+                <span>From:</span>
+                <input type="date">
+            </div>
+            <div id="postgraduate-to" class="eduction-time-section eduction-time-section-two">
+                <span>To:</span>
+                <input type="date">
+            </div>
+
+            <span class="education-institution-location">Institution location: </span>
+            <textarea id="profile-info-content-education-postgraduate-institution-location-input" class="education-location-textarea" maxlength="300" placeholder="Put instituion location here within 300 charecters. (optional)"></textarea>
+            
+            <h2>GRADUATE</h2>
+            <span class="profile-info-content-graduate-title">Institution: </span>
+            <input type="text" id="profile-info-content-education-graduate-institution-input" class="education-institution-name-input"  maxlength="150" placeholder="Put instituion name here within 150 charecters. (optional)">
+
+            <div class="education-duration"><span>Duration: </span></div>
+            <div id="graduate-from" class="eduction-time-section">
+                <span>From:</span>
+                <input type="date">
+            </div>
+            <div id="graduate-to" class="eduction-time-section eduction-time-section-two">
+                <span>To:</span>
+                <input type="date">
+            </div>
+
+            <span class="education-institution-location">Institution location: </span>
+            <textarea id="profile-info-content-education-graduate-institution-location-input" class="education-location-textarea" maxlength="300" placeholder="Put instituion location here within 300 charecters. (optional)"></textarea>
+
+            <h2>HIGHER SECONDARY</h2>
+            <span class="profile-info-content-higherSeconday-title">Institution: </span>
+            <input type="text" id="profile-info-content-education-higherSeconday-institution-input" class="education-institution-name-input"  maxlength="150" placeholder="Put instituion name here within 150 charecters. (optional)">
+
+            <div class="education-duration"><span>Duration: </span></div>
+            <div id="higherSeconday-from" class="eduction-time-section">
+                <span>From:</span>
+                <input type="date">
+            </div>
+            <div id="higherSeconday-to" class="eduction-time-section eduction-time-section-two">
+                <span>To:</span>
+                <input type="date">
+            </div>
+
+            <span class="education-institution-location">Institution location: </span>
+            <textarea id="profile-info-content-education-higherSeconday-institution-location-input" class="education-location-textarea" maxlength="300" placeholder="Put instituion location here within 300 charecters. (optional)"></textarea>
+
+            <h2>SECONDARY</h2>
+            <span class="profile-info-content-seconday-title">Institution: </span>
+            <input type="text" id="profile-info-content-education-seconday-institution-input" class="education-institution-name-input"  maxlength="150" placeholder="Put instituion name here within 150 charecters. (optional)">
+
+            <div class="education-duration"><span>Duration: </span></div>
+            <div id="seconday-from" class="eduction-time-section">
+                <span>From:</span>
+                <input type="date">
+            </div>
+            <div id="seconday-to" class="eduction-time-section eduction-time-section-two">
+                <span>To:</span>
+                <input type="date">
+            </div>
+
+            <span class="education-institution-location">Institution location: </span>
+            <textarea id="profile-info-content-education-seconday-institution-location-input" class="education-location-textarea" maxlength="300" placeholder="Put instituion location here within 300 charecters. (optional)"></textarea>
+
+            <h2>ELEMENTARY</h2>
+            <span class="profile-info-content-elementary-title">Institution: </span>
+            <input type="text" id="profile-info-content-education-elementary-input" class="education-institution-name-input"  maxlength="150" placeholder="Put instituion name here within 150 charecters. (optional)">
+
+            <div class="education-duration"><span>Duration: </span></div>
+            <div id="elementary-from" class="eduction-time-section">
+                <span>From:</span>
+                <input type="date">
+            </div>
+            <div id="elementary-to" class="eduction-time-section eduction-time-section-two">
+                <span>To:</span>
+                <input type="date">
+            </div>
+
+            <span class="education-institution-location">Institution location: </span>
+            <textarea id="profile-info-content-education-elementary-location-input" class="education-location-textarea" maxlength="300" placeholder="Put instituion location here within 300 charecters. (optional)"></textarea>
+        </span>
+    </div>
+    <!-- education -->
+
+    <!-- company -->
+    <div id="comapany-updateProfilepage" class="profile-info-content">
+        <div class="profile-info-content-one profile-info-content-company-one"><span>Company: </span></div>
+        <span class="profile-info-content-two profile-info-content-company-two">
+            
+            <h2>COMPANY ONE</h2>
+            <span class="profile-info-content-company-title">Organization: </span>
+            <input type="text" id="profile-info-content-company-one-input" class="education-institution-name-input"  maxlength="150" placeholder="Put company name here within 150 charecters. (optional)">
+
+            <div class="company-duration"><span>Duration: </span></div>
+            <div id="company-one-from" class="eduction-time-section">
+                <span>From:</span>
+                <input type="date">
+            </div>
+            <div id="company-one-to" class="eduction-time-section eduction-time-section-two">
+                <span>To:</span>
+                <input type="date">
+            </div>
+
+            <span class="company-location">Organization location: </span>
+            <textarea id="profile-info-content-company-one-location-input" class="education-location-textarea" maxlength="300" placeholder="Put company location here within 300 charecters. (optional)"></textarea>
+            
+            <h2>COMPANY TWO</h2>
+            <span class="profile-info-content-company-title">Organization: </span>
+            <input type="text" id="profile-info-content-company-two-input" class="education-institution-name-input"  maxlength="150" placeholder="Put company name here within 150 charecters. (optional)">
+
+            <div class="company-duration"><span>Duration: </span></div>
+            <div id="company-two-from" class="eduction-time-section">
+                <span>From:</span>
+                <input type="date">
+            </div>
+            <div id="company-two-to" class="eduction-time-section eduction-time-section-two">
+                <span>To:</span>
+                <input type="date">
+            </div>
+
+            <span class="company-location">Organization location: </span>
+            <textarea id="profile-info-content-company-two-location-input" class="education-location-textarea" maxlength="300" placeholder="Put company location here within 300 charecters. (optional)"></textarea>
+
+            <h2>COMPANY THREE</h2>
+            <span class="profile-info-content-company-title">Organization: </span>
+            <input type="text" id="profile-info-content-company-three-input" class="education-institution-name-input"  maxlength="150" placeholder="Put company name here within 150 charecters. (optional)">
+
+            <div class="company-duration"><span>Duration: </span></div>
+            <div id="company-three-from" class="eduction-time-section">
+                <span>From:</span>
+                <input type="date">
+            </div>
+            <div id="company-three-to" class="eduction-time-section eduction-time-section-two">
+                <span>To:</span>
+                <input type="date">
+            </div>
+
+            <span class="company-location">Organization location: </span>
+            <textarea id="profile-info-content-company-three-location-input" class="education-location-textarea" maxlength="300" placeholder="Put company location here within 300 charecters. (optional)"></textarea>
+            
+        </span>
+    </div>
+    <!-- company -->
+    
+    <!-- business -->
+    <div id="business-updateProfilepage" class="profile-info-content">
+        <div class="profile-info-content-one profile-info-content-business-one"><span>Business: </span></div>
+        <span class="profile-info-content-two profile-info-content-business-two">
+            
+            <h2>BUSINESS ONE</h2>
+            <span class="profile-info-content-business-title">Name: </span>
+            <input type="text" id="profile-info-content-business-one-input" class="education-institution-name-input"  maxlength="150" placeholder="Put business name here within 150 charecters. (optional)">
+
+            <div class="business-duration"><span>Duration: </span></div>
+            <div id="business-one-from" class="eduction-time-section">
+                <span>From:</span>
+                <input type="date">
+            </div>
+            <div id="business-one-to" class="eduction-time-section eduction-time-section-two">
+                <span>To:</span>
+                <input type="date">
+            </div>
+
+            <span class="business-location">Business location: </span>
+            <textarea id="profile-info-content-business-one-location-input" class="education-location-textarea" maxlength="300" placeholder="Put business location here within 300 charecters. (optional)"></textarea>
+
+            <h2>BUSINESS TWO</h2>
+            <span class="profile-info-content-business-title">Name: </span>
+            <input type="text" id="profile-info-content-business-two-input" class="education-institution-name-input"  maxlength="150" placeholder="Put business name here within 150 charecters. (optional)">
+
+            <div class="business-duration"><span>Duration: </span></div>
+            <div id="business-two-from" class="eduction-time-section">
+                <span>From:</span>
+                <input type="date">
+            </div>
+            <div id="business-two-to" class="eduction-time-section eduction-time-section-two">
+                <span>To:</span>
+                <input type="date">
+            </div>
+
+            <span class="business-location">Business location: </span>
+            <textarea id="profile-info-content-business-two-location-input" class="education-location-textarea" maxlength="300" placeholder="Put business location here within 300 charecters. (optional)"></textarea>
+
+            <h2>BUSINESS THREE</h2>
+            <span class="profile-info-content-business-title">Name: </span>
+            <input type="text" id="profile-info-content-business-three-input" class="education-institution-name-input"  maxlength="150" placeholder="Put business name here within 150 charecters. (optional)">
+
+            <div class="business-duration"><span>Duration: </span></div>
+            <div id="business-three-from" class="eduction-time-section">
+                <span>From:</span>
+                <input type="date">
+            </div>
+            <div id="business-three-to" class="eduction-time-section eduction-time-section-two">
+                <span>To:</span>
+                <input type="date">
+            </div>
+
+            <span class="business-location">Business location: </span>
+            <textarea id="profile-info-content-business-three-location-input" class="education-location-textarea" maxlength="300" placeholder="Put business location here within 300 charecters. (optional)"></textarea>
+            
+        </span>
+    </div>
+    <!-- business -->
+
+    <!-- passion -->
+    <div id="passion-updateProfilepage" class="profile-info-content">
+        <div class="profile-info-content-one profile-info-content-passion-one"><span>Passion: </span></div>
+        <span class="profile-info-content-two profile-info-content-passion-two">
+            <input type="text" id="profile-info-content-passion-input"  maxlength="200" placeholder="Put passion here, e.g. kite flying, surfing, within 200 charecters. (optional)">
+        </span>
+    </div>
+    <!-- passion -->
+    
+    <!-- religion -->
+    <div id="religion-updateProfilepage" class="profile-info-content">
+        <div class="profile-info-content-one profile-info-content-religion-one"><span>Religion: </span></div>
+        <span class="profile-info-content-two profile-info-content-religion-two">
+            <input type="text" id="profile-info-content-religion-input"  maxlength="20" placeholder="Put your belief here within 20 charecters. (optional)">
+        </span>
+    </div>
+    <!-- religion -->
+
+    <!-- poitics -->
+    <div id="poitics-updateProfilepage" class="profile-info-content">
+        <div class="profile-info-content-one profile-info-content-poitics-one"><span>Politics: </span></div>
+        <span class="profile-info-content-two profile-info-content-poitics-two">
+            <input type="text" id="profile-info-content-poitics-input"  maxlength="100" placeholder="Put your political support here within 100 charecters. (optional)">
+        </span>
+    </div>
+    <!-- poitics -->
+    
+    
+    <p>Friends: </p>
+    <p>Followers: </p>
+    <p>Family Members: </p>
+
+    <div id="updateProfileInfo">
+        <button>Update</button>
+    </div>
+</div>   
+</div>
+
+
+
+
+<script defer src="/firebaseNewUpdateProfile.bundle.js"></script> <!--         src/firebase_new/main.js          -->
+
