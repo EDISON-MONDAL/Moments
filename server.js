@@ -440,11 +440,13 @@ app.post('/resizeVideo', (req, res) => {
       .on('end', function () {
         console.log('Processing finished!');
 
+
         // Delete unprocessed uploaded video
         fs.unlink('tmp/' + file_name, function (err) {
           if (err) console.error(err);
           console.log('Unprocessed video deleted');
         });
+
 
         // Manage compressed video
         try {
@@ -460,6 +462,9 @@ app.post('/resizeVideo', (req, res) => {
             // Set the Content-Type header to indicate the type of the response
             res.setHeader('Content-Type', 'video/mp4');
 
+            // Set the Content-Disposition header to include the file name
+            res.setHeader('Content-Disposition', `attachment; filename=${encodeURIComponent(['output-', date_string, file.name ])}`);
+
             // Set the Content-Length header to the size of the file
             res.setHeader('Content-Length', stat.size);
 
@@ -467,6 +472,7 @@ app.post('/resizeVideo', (req, res) => {
             const readStream = fs.createReadStream(filePath);
             readStream.pipe(res);
           });
+
 
           // Delete compressed video
           // fs.unlink("tmp/output-" + file_name, function(err){

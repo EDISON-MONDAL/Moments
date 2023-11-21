@@ -5306,18 +5306,21 @@ function backToLogInLandingPage(){
                             xhrFields: {
                               responseType: 'blob' // Set the response type to 'blob'
                             },
-                            success: function (data) { 
-                              //  $('#response').html('Video uploaded successfully.');
-
+                            success: function(data, textStatus, jqXHR) {
+                              // Get the file name from the Content-Disposition header
+                              const fileName = jqXHR.getResponseHeader('Content-Disposition').split('filename=')[1];
+                      
                               // Create a Blob from the binary data
                               const videoBlob = new Blob([data], { type: 'video/mp4' });
-
+                      
                               // Create a data URL from the Blob
                               const videoURL = URL.createObjectURL(videoBlob);
-
+                      
                               // Set the video source to the created data URL
                               $('#testVideoElem').attr('src', videoURL);
-                              
+                      
+                              // Output the file name
+                              console.log('File Name:', decodeURIComponent(fileName) );
                             },
                             error: function (error) {
                               // $('#response').html('Error uploading video: ' + error.responseText);
