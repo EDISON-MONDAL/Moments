@@ -420,12 +420,30 @@ app.post('/resizeVideo', (req, res) => {
     }
     console.log('File Uploaded successfully');
 
+    // Use fluent-ffmpeg to get video information
+    ffmpeg.ffprobe('tmp/' + file_name, (err, metadata) => {
+      if (err) {
+        console.error('Error:', err);
+        res.status(500).send('Error getting video information');
+      } else {
+        const videoStream = metadata.streams.find((stream) => stream.codec_type === 'video');
+  
+        if (videoStream && videoStream.width) {
+          const width = videoStream.width;
+          console.log(`Video frame width: ${width}`);
+        } else {
+          res.status(500).send('Error: Video width not found in the metadata');
+        }
+      }
+    });
+    
+
     ffmpeg('tmp/' + file_name)
       .format('mp4')
       .videoCodec('libx264')
-      .videoBitrate('200k', true)
+      //.videoBitrate('200k', true)
       .audioCodec('libmp3lame')
-      .size('100x?') // 640x480, 1280x?
+      .size('640x?') // 640x480, 1280x?
       .on('error', function (err) {
         console.log('An error occurred: ' + err.message);
 
