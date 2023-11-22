@@ -5292,7 +5292,27 @@ function backToLogInLandingPage(){
                                            
 
                       createRightSideFooter_editPreview_addVideo_file.onchange = (e)=>{ 
+                        const videoFile = $('#addMessengerMultiVideos')[0].files[0]
+                const videoElement = document.createElement('video');
+                
+                // Create a URL for the selected video file
+                const videoURL = URL.createObjectURL(videoFile);
+                
+                // Set the video source to the URL
+                videoElement.src = videoURL;
+                
+                // Wait for metadata to load (including video width)
+                videoElement.addEventListener('loadedmetadata', function() {
+                    // Access the video width
+                    const videoWidth = this.videoWidth;
+                    
+                    // Log or use the video width as needed
+                    console.log('Video Width:', videoWidth);
 
+                    // Clean up: revoke the URL created for the video file
+                    URL.revokeObjectURL(videoURL);
+                });
+                        /*
                         var formData = new FormData();
                         formData.append('video_field_ajax_appendFormData', $('#addMessengerMultiVideos')[0].files[0]);
                         formData.append('myId', myId)
@@ -5327,6 +5347,7 @@ function backToLogInLandingPage(){
                               console.log( 'Error uploading video: ' + error.responseText )
                             }
                         });
+                        */
                       }                        
                   // add video
                 // hearder controls
