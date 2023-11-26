@@ -51,3 +51,8 @@ const messengerSchema = new mongoose.Schema(
 const messengerDatabase = mongoose.createConnection('mongodb+srv://edison_mondal:admin@moments-database.b78ofus.mongodb.net/messenger?retryWrites=true&w=majority')
 
 module.exports = messengerDatabase.model('all-messages', messengerSchema)
+
+
+
+
+

@@ -5290,28 +5290,36 @@ function backToLogInLandingPage(){
                       createRightSideFooter_editPreview_header_SubSection.appendChild( createRightSideFooter_editPreview_addVideo_file )
 
                                            
-
+                      let video_Width = 0
+                      let video_Duration = 0
                       createRightSideFooter_editPreview_addVideo_file.onchange = (e)=>{ 
-                        const videoFile = $('#addMessengerMultiVideos')[0].files[0]
-                const videoElement = document.createElement('video');
-                
-                // Create a URL for the selected video file
-                const videoURL = URL.createObjectURL(videoFile);
-                
-                // Set the video source to the URL
-                videoElement.src = videoURL;
-                
-                // Wait for metadata to load (including video width)
-                videoElement.addEventListener('loadedmetadata', function() {
-                    // Access the video width
-                    const videoWidth = this.videoWidth;
-                    
-                    // Log or use the video width as needed
-                    console.log('Video Width:', videoWidth);
+                        // --------- check video width ------------- 
+                          const videoFile = $('#addMessengerMultiVideos')[0].files[0]
+                          const videoElement = document.createElement('video');
+                          
+                          // Create a URL for the selected video file
+                          const videoURL = URL.createObjectURL(videoFile);
+                          
+                          // Set the video source to the URL
+                          videoElement.src = videoURL;
+                          
+                          // Wait for metadata to load (including video width)
+                          videoElement.addEventListener('loadedmetadata', function() {
+                              // Access the video width
+                              video_Width = this.videoWidth;
 
-                    // Clean up: revoke the URL created for the video file
-                    URL.revokeObjectURL(videoURL);
-                });
+                              // Access the video duration
+                              video_Duration = this.duration;                              
+
+                              // Clean up: revoke the URL created for the video file
+                              URL.revokeObjectURL(videoURL);
+                          });
+                        // --------- check video width ------------- 
+
+                        // Log or use the video width as needed
+                        console.log('--------------Video Width:', video_Width);
+                        console.log('------------Video Duration:', video_Duration);
+
                         /*
                         var formData = new FormData();
                         formData.append('video_field_ajax_appendFormData', $('#addMessengerMultiVideos')[0].files[0]);

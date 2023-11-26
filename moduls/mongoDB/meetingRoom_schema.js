@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 
+
 const meetingsSchema = new mongoose.Schema(
     {   
         credentials: {

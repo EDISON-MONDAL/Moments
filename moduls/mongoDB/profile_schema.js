@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 
+
 const profileSchema = new mongoose.Schema(
     {   
         profileInfo:{
@@ -174,7 +175,7 @@ const profileSchema = new mongoose.Schema(
                 }
             }
         }
-    },
+    },    
     /*
     {
         timestamps: true
