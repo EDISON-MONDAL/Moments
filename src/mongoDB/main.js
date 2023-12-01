@@ -6,6 +6,7 @@ router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
 
 
+
 /*
 router.get('/', (req, res) => { //after / the word will be added to localhost:port/routes/<word>    
     //display the predefind text
@@ -1213,7 +1214,7 @@ router.post('/', async(req, res)=>{
     // object friendly email
 
 
-      
+    
     
     const query = {};
     query[`_id`] = req.body.room_id;
