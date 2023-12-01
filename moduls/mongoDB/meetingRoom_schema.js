@@ -19,6 +19,6 @@ const meetingsSchema = new mongoose.Schema(
     */
 )
 
-const meetingsDatabase = mongoose.createConnection('mongodb+srv://edison_mondal:admin@moments-database.b78ofus.mongodb.net/meetings?retryWrites=true&w=majority') // , {socketTimeoutMS: 0000}
+const meetingsDatabase = mongoose.createConnection('mongodb+srv://edison_mondal:admin@moments-database.b78ofus.mongodb.net/meetings?retryWrites=true&w=majority') 
 
 module.exports = meetingsDatabase.model('all-rooms', meetingsSchema)

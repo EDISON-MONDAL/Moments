@@ -5304,21 +5304,33 @@ function backToLogInLandingPage(){
                           videoElement.src = videoURL;
                           
                           // Wait for metadata to load (including video width)
-                          videoElement.addEventListener('loadedmetadata', function() {
+                          videoElement.addEventListener('loadedmetadata',async function() {
                               // Access the video width
                               video_Width = this.videoWidth;
 
                               // Access the video duration
-                              video_Duration = this.duration;                              
+                              video_Duration = this.duration;   
+                              
+                              await videoCompressProcess()
 
                               // Clean up: revoke the URL created for the video file
                               URL.revokeObjectURL(videoURL);
                           });
                         // --------- check video width ------------- 
 
-                        // Log or use the video width as needed
-                        console.log('--------------Video Width:', video_Width);
-                        console.log('------------Video Duration:', video_Duration);
+                        function videoCompressProcess() {
+                          // Log or use the video width as needed
+                          console.log('--------------Video Width:', video_Width);
+                          console.log('------------Video Duration:', video_Duration);
+                          
+                          if( video_Duration <= 600){
+                            if(video_Width >=852){
+
+                            }
+                          } else {
+                            console.log('Messenger video duration must be under 10 minutes!')
+                          }
+                        }
 
                         /*
                         var formData = new FormData();
