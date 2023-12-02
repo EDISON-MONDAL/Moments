@@ -4,6 +4,7 @@ const app = express()
 const PORT = process.env.PORT || 3000
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+
 const multer_lib = require('multer')
 const multerPath = multer_lib({ storage: multer_lib.memoryStorage() })
 
@@ -14,6 +15,7 @@ const ExifParser = require('exif-parser')
 
 const fs = require('fs')
 const path = require('path');
+
 
 const ffmpeg = require('fluent-ffmpeg')
 const pathToFfmpeg = require('ffmpeg-static')
@@ -259,6 +261,8 @@ app.use(express.static('src'))
 app.use(express.static('css'))
 app.use(express.static('media'))
 
+
+
 // parse application/ x-www-form-urlencoded
 app.use(express.urlencoded({ extended: false }))
 
@@ -266,85 +270,28 @@ app.use(express.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 
-app.use(
-  expressFileUpload({
-    createParentPath: true,
-    useTempFiles: true,
-    tempFileDir: "/tmp/",
-  })
-)
-
-
-ffmpeg.setFfmpegPath( pathToFfmpeg )
-// ffmpeg.setFfprobePath("ffprobe.exe")
-// ffmpeg.setFlvtoolPath("ffplay.exe")
 
 
 
-// image resizing and compression (single)
-  app.post('/resizeNewProfilePic', multerPath.single('newProfileImgFile'), (req, res) => {
-    // req.file 
-    // req.file.buffer
-    // req.file.buffer.toString('base64')
 
-    const width = Number(req.body.width)
-    const height = Number(req.body.height)
+// -------- multer file uploads only ----------
 
-        
-    
-    const parser = ExifParser.create(req.file.buffer);
-    const result = parser.parse();
-    const orientation = result.tags.Orientation;
+  // image resizing and compression (single)
+    app.post('/resizeNewProfilePic', multerPath.single('newProfileImgFile'), (req, res) => {
+      // req.file 
+      // req.file.buffer
+      // req.file.buffer.toString('base64')
 
-    let sharpImage = sharp( req.file.buffer )
+      const width = Number(req.body.width)
+      const height = Number(req.body.height)
 
-    switch (orientation) {
-      case 3:
-        sharpImage = sharpImage.rotate(180);
-        break;
-      case 6:
-        sharpImage = sharpImage.rotate(90);
-        break;
-      case 8:
-        sharpImage = sharpImage.rotate(270);
-        break;
-      default:
-        // No rotation needed
-        break;
-    }
+          
       
-    sharpImage
-    .resize(width, height)
-    .toBuffer((err, outputBuffer) => {
-        if (err) {
-          return res.status(500).send('Error resizing image');
-        }
-        // render updateAllProfile.js
-        res.send( { base64image: outputBuffer.toString('base64') } );
-    })
-  });
-// image resizing and compression (single)
-
-// image resizing and compression (multiple)
-  app.post('/resizeNewProfilePicM', multerPath.any(), (req, res) => {
-    // req.file 
-    // req.file.buffer
-    // req.file.buffer.toString('base64')
-  
-    const width = Number(req.body.width)
-    const height = JSON.parse(req.body.height)
-  
-    const base64imageArray = []
-    
-    console.log('multer length '+ req.files.length)
-     
-    for (let i = 0; i < req.files.length; i++) {
-
-      const parser = ExifParser.create(req.files[i].buffer);
+      const parser = ExifParser.create(req.file.buffer);
       const result = parser.parse();
       const orientation = result.tags.Orientation;
 
-      let sharpImage = sharp(req.files[i].buffer);
+      let sharpImage = sharp( req.file.buffer )
 
       switch (orientation) {
         case 3:
@@ -360,152 +307,219 @@ ffmpeg.setFfmpegPath( pathToFfmpeg )
           // No rotation needed
           break;
       }
-      
+        
       sharpImage
-      .resize(width, height[i])
+      .resize(width, height)
       .toBuffer((err, outputBuffer) => {
           if (err) {
             return res.status(500).send('Error resizing image');
           }
-                 
-          base64imageArray.push( outputBuffer.toString('base64') )
-           
-      })  
-  
-      // end of loop
-        if(i+1 == req.files.length ){
-          setTimeout(()=>{
-            sendResponse()
-          }, 20000)
-          
+          // render updateAllProfile.js
+          res.send( { base64image: outputBuffer.toString('base64') } );
+      })
+    });
+  // image resizing and compression (single)
+
+  // image resizing and compression (multiple)
+    app.post('/resizeNewProfilePicM', multerPath.any(), (req, res) => {
+      // req.file 
+      // req.file.buffer
+      // req.file.buffer.toString('base64')
+    
+      const width = Number(req.body.width)
+      const height = JSON.parse(req.body.height)
+    
+      const base64imageArray = []
+      
+      console.log('multer length '+ req.files.length)
+      
+      for (let i = 0; i < req.files.length; i++) {
+
+        const parser = ExifParser.create(req.files[i].buffer);
+        const result = parser.parse();
+        const orientation = result.tags.Orientation;
+
+        let sharpImage = sharp(req.files[i].buffer);
+
+        switch (orientation) {
+          case 3:
+            sharpImage = sharpImage.rotate(180);
+            break;
+          case 6:
+            sharpImage = sharpImage.rotate(90);
+            break;
+          case 8:
+            sharpImage = sharpImage.rotate(270);
+            break;
+          default:
+            // No rotation needed
+            break;
         }
-      // end of loop
-    }
-  
-    function sendResponse() {
-      console.log('base64imageArray length '+ base64imageArray.length)
-      res.send( { base64imageArray: JSON.stringify( base64imageArray ) } );
-    }
-  });
-// image resizing and compression (multiple)
-
-
-
-// video resizing and compression
-app.post('/resizeVideo', (req, res) => {
-  let file = req.files.video_field_ajax_appendFormData;
-
-  const d = new Date();
-  const month = Number(d.getMonth() + 1);
-  const date_string =
-    d.getDate() +
-    '-' +
-    month +
-    '-' +
-    d.getFullYear() +
-    ' ' +
-    d.getHours() +
-    '-' +
-    d.getMinutes() +
-    '-' +
-    d.getSeconds();
-
-  let file_name =
-    req.body.myId + ' ' + date_string + ' ' + file.name;
-
-  file.mv('tmp/' + file_name, function (err) {
-    if (err) {
-      console.error(err);
-      return res.status(500).send('Error uploading file');
-    }
-    console.log('File Uploaded successfully');
-
-    // Use fluent-ffmpeg to get video information
-    ffmpeg.ffprobe('tmp/' + file_name, (err, metadata) => {
-      if (err) {
-        console.error('Error:', err);
-        res.status(500).send('Error getting video information');
-      } else {
-        const videoStream = metadata.streams.find((stream) => stream.codec_type === 'video');
-  
-        if (videoStream && videoStream.width) {
-          const width = videoStream.width;
-          console.log(`Video frame width: ${width}`);
-        } else {
-          res.status(500).send('Error: Video width not found in the metadata');
-        }
+        
+        sharpImage
+        .resize(width, height[i])
+        .toBuffer((err, outputBuffer) => {
+            if (err) {
+              return res.status(500).send('Error resizing image');
+            }
+                  
+            base64imageArray.push( outputBuffer.toString('base64') )
+            
+        })  
+    
+        // end of loop
+          if(i+1 == req.files.length ){
+            setTimeout(()=>{
+              sendResponse()
+            }, 20000)
+            
+          }
+        // end of loop
+      }
+    
+      function sendResponse() {
+        console.log('base64imageArray length '+ base64imageArray.length)
+        res.send( { base64imageArray: JSON.stringify( base64imageArray ) } );
       }
     });
+  // image resizing and compression (multiple)
+
+// -------- multer file uploads only ----------
+
+
+// -------- express-fileuploads only ----------
+
+  app.use(
+    expressFileUpload({
+      createParentPath: true,
+      useTempFiles: true,
+      tempFileDir: "/tmp/",
+    })
+  )
+
+  ffmpeg.setFfmpegPath( pathToFfmpeg )
+  // ffmpeg.setFfprobePath("ffprobe.exe")
+  // ffmpeg.setFlvtoolPath("ffplay.exe")
+
+
+  // video resizing and compression
+  app.post('/resizeVideo', (req, res) => {
+    let file = req.files.video_field_ajax_appendFormData;
+
+    const d = new Date();
+    const month = Number(d.getMonth() + 1);
+    const date_string =
+      d.getDate() +
+      '-' +
+      month +
+      '-' +
+      d.getFullYear() +
+      ' ' +
+      d.getHours() +
+      '-' +
+      d.getMinutes() +
+      '-' +
+      d.getSeconds();
+
+    let file_name =
+      req.body.myId + ' ' + date_string + ' ' + file.name;
+
+    file.mv('tmp/' + file_name, function (err) {
+      if (err) {
+        console.error(err);
+        return res.status(500).send('Error uploading file');
+      }
+      console.log('File Uploaded successfully');
+
+      // Use fluent-ffmpeg to get video information
+      ffmpeg.ffprobe('tmp/' + file_name, (err, metadata) => {
+        if (err) {
+          console.error('Error:', err);
+          res.status(500).send('Error getting video information');
+        } else {
+          const videoStream = metadata.streams.find((stream) => stream.codec_type === 'video');
     
+          if (videoStream && videoStream.width) {
+            const width = videoStream.width;
+            console.log(`Video frame width: ${width}`);
+          } else {
+            res.status(500).send('Error: Video width not found in the metadata');
+          }
+        }
+      });
+      
 
-    ffmpeg('tmp/' + file_name)
-      .format('mp4')
-      .videoCodec('libx264')
-      //.videoBitrate('200k', true)
-      .audioCodec('libmp3lame')
-      .size('640x?') // 640x480, 1280x?
-      .on('error', function (err) {
-        console.log('An error occurred: ' + err.message);
+      ffmpeg('tmp/' + file_name)
+        .format('mp4')
+        .videoCodec('libx264')
+        //.videoBitrate('200k', true)
+        .audioCodec('libmp3lame')
+        .size('640x?') // 640x480, 1280x?
+        .on('error', function (err) {
+          console.log('An error occurred: ' + err.message);
 
-        // Delete unprocessed uploaded video
-        fs.unlink('tmp/' + file_name, function (err) {
-          if (err) console.error(err);
-          console.log('Unprocessed video deleted');
-        });
+          // Delete unprocessed uploaded video
+          fs.unlink('tmp/' + file_name, function (err) {
+            if (err) console.error(err);
+            console.log('Unprocessed video deleted');
+          });
 
-        return res.status(500).send('Error processing video');
-      })
-      .on('end', function () {
-        console.log('Processing finished!');
-
-
-        // Delete unprocessed uploaded video
-        fs.unlink('tmp/' + file_name, function (err) {
-          if (err) console.error(err);
-          console.log('Unprocessed video deleted');
-        });
+          return res.status(500).send('Error processing video');
+        })
+        .on('end', function () {
+          console.log('Processing finished!');
 
 
-        // Manage compressed video
-        try {
-          const filePath = path.join(__dirname, 'tmp', 'output-' + file_name);
-
-          // Check if the file exists
-          fs.stat(filePath, (err, stat) => {
-            if (err) {
-              console.error(err);
-              return res.status(404).send('File not found');
-            }
-
-            // Set the Content-Type header to indicate the type of the response
-            res.setHeader('Content-Type', 'video/mp4');
-
-            // Set the Content-Disposition header to include the file name
-            res.setHeader('Content-Disposition', `attachment; filename=${encodeURIComponent(['output-', date_string, file.name ])}`);
-
-            // Set the Content-Length header to the size of the file
-            res.setHeader('Content-Length', stat.size);
-
-            // Stream the file to the response
-            const readStream = fs.createReadStream(filePath);
-            readStream.pipe(res);
+          // Delete unprocessed uploaded video
+          fs.unlink('tmp/' + file_name, function (err) {
+            if (err) console.error(err);
+            console.log('Unprocessed video deleted');
           });
 
 
-          // Delete compressed video
-          // fs.unlink("tmp/output-" + file_name, function(err){
-          //   if(err) console.error(err);
-          //   console.log('Compressed video deleted')
-          // });
-        } catch (err) {
-          console.error(err);
-          res.status(500).send('Internal Server Error');
-        }
-      })
-      .save('tmp/output-' + file_name);
+          // Manage compressed video
+          try {
+            const filePath = path.join(__dirname, 'tmp', 'output-' + file_name);
+
+            // Check if the file exists
+            fs.stat(filePath, (err, stat) => {
+              if (err) {
+                console.error(err);
+                return res.status(404).send('File not found');
+              }
+
+              // Set the Content-Type header to indicate the type of the response
+              res.setHeader('Content-Type', 'video/mp4');
+
+              // Set the Content-Disposition header to include the file name
+              res.setHeader('Content-Disposition', `attachment; filename=${encodeURIComponent(date_string + ' ' + file.name )}`);
+
+              // Set the Content-Length header to the size of the file
+              res.setHeader('Content-Length', stat.size);
+
+              // Stream the file to the response
+              const readStream = fs.createReadStream(filePath);
+              readStream.pipe(res);
+            });
+
+
+            // Delete compressed video
+            // fs.unlink("tmp/output-" + file_name, function(err){
+            //   if(err) console.error(err);
+            //   console.log('Compressed video deleted')
+            // });
+          } catch (err) {
+            console.error(err);
+            res.status(500).send('Internal Server Error');
+          }
+        })
+        .save('tmp/output-' + file_name);
+    });
   });
-});
-// video resizing and compression
+  // video resizing and compression
+
+// -------- express-fileuploads only ----------
+
 
 
 /* ------------------ firebase ------------------ */

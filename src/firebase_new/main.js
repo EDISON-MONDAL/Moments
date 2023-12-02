@@ -5315,18 +5315,14 @@ function backToLogInLandingPage(){
                           });
                         // --------- check video width ------------- 
 
-                        function videoCompressProcess() {
-                          // Log or use the video width as needed
-                          console.log('--------------Video Width:', video_Width);
-                          console.log('------------Video Duration:', video_Duration);
-                          
-                          if( video_Duration <= 600){
 
-                            if(video_Width >=852){
+                        function videoCompressProcess() {                          
+                          if( video_Duration <= 600){
+                            if(video_Width >= 852){
                               // need processing
 
                               var formData = new FormData();
-                              formData.append('video_field_ajax_appendFormData', $('#addMessengerMultiVideos')[0].files[0]);
+                              formData.append('video_field_ajax_appendFormData', videoFile);
                               formData.append('myId', myId)
 
                               $.ajax({
@@ -5359,7 +5355,7 @@ function backToLogInLandingPage(){
                                   console.log( 'Error uploading video: ' + error.responseText )
                                 }
                               });
-                              
+
                             } else {
                               // no processing required
 
@@ -5367,10 +5363,8 @@ function backToLogInLandingPage(){
                               $('#testVideoElem').attr('src', videoURL);
                             }
 
-
                             // Clean up: revoke the URL created for the video file
                             URL.revokeObjectURL(videoURL);
-
                           } else {
                             console.log('Messenger video duration must be under 10 minutes!')
                           }
@@ -5510,6 +5504,12 @@ function backToLogInLandingPage(){
 
                       }
                     // image pice
+
+                    // video pice
+                      function addAnotherPicesMsgPortion_videoPice(){
+
+                      }
+                    // video pice
                   // add another pice
 
                 // main
