@@ -5311,10 +5311,7 @@ function backToLogInLandingPage(){
                               // Access the video duration
                               video_Duration = this.duration;   
                               
-                              await videoCompressProcess()
-
-                              // Clean up: revoke the URL created for the video file
-                              URL.revokeObjectURL(videoURL);
+                              await videoCompressProcess()                              
                           });
                         // --------- check video width ------------- 
 
@@ -5324,50 +5321,61 @@ function backToLogInLandingPage(){
                           console.log('------------Video Duration:', video_Duration);
                           
                           if( video_Duration <= 600){
-                            if(video_Width >=852){
 
+                            if(video_Width >=852){
+                              // need processing
+
+                              var formData = new FormData();
+                              formData.append('video_field_ajax_appendFormData', $('#addMessengerMultiVideos')[0].files[0]);
+                              formData.append('myId', myId)
+
+                              $.ajax({
+                                type: 'POST',
+                                url: '/resizeVideo',  // The Express.js route for handling the video upload
+                                data: formData,
+                                processData: false,
+                                contentType: false,
+                                xhrFields: {
+                                  responseType: 'blob' // Set the response type to 'blob'
+                                },
+                                success: function(data, textStatus, jqXHR) {
+                                  // Get the file name from the Content-Disposition header
+                                  const fileName = jqXHR.getResponseHeader('Content-Disposition').split('filename=')[1];
+                          
+                                  // Create a Blob from the binary data
+                                  const videoBlob = new Blob([data], { type: 'video/mp4' });
+                          
+                                  // Create a data URL from the Blob
+                                  const videoURL = URL.createObjectURL(videoBlob);
+                          
+                                  // Set the video source to the created data URL
+                                  $('#testVideoElem').attr('src', videoURL);
+                          
+                                  // Output the file name
+                                  console.log('File Name:', decodeURIComponent(fileName) );
+                                },
+                                error: function (error) {
+                                  // $('#response').html('Error uploading video: ' + error.responseText);
+                                  console.log( 'Error uploading video: ' + error.responseText )
+                                }
+                              });
+                              
+                            } else {
+                              // no processing required
+
+                              // Set the video source to the created data URL
+                              $('#testVideoElem').attr('src', videoURL);
                             }
+
+
+                            // Clean up: revoke the URL created for the video file
+                            URL.revokeObjectURL(videoURL);
+
                           } else {
                             console.log('Messenger video duration must be under 10 minutes!')
                           }
                         }
 
-                        /*
-                        var formData = new FormData();
-                        formData.append('video_field_ajax_appendFormData', $('#addMessengerMultiVideos')[0].files[0]);
-                        formData.append('myId', myId)
-
-                        $.ajax({
-                            type: 'POST',
-                            url: '/resizeVideo',  // The Express.js route for handling the video upload
-                            data: formData,
-                            processData: false,
-                            contentType: false,
-                            xhrFields: {
-                              responseType: 'blob' // Set the response type to 'blob'
-                            },
-                            success: function(data, textStatus, jqXHR) {
-                              // Get the file name from the Content-Disposition header
-                              const fileName = jqXHR.getResponseHeader('Content-Disposition').split('filename=')[1];
-                      
-                              // Create a Blob from the binary data
-                              const videoBlob = new Blob([data], { type: 'video/mp4' });
-                      
-                              // Create a data URL from the Blob
-                              const videoURL = URL.createObjectURL(videoBlob);
-                      
-                              // Set the video source to the created data URL
-                              $('#testVideoElem').attr('src', videoURL);
-                      
-                              // Output the file name
-                              console.log('File Name:', decodeURIComponent(fileName) );
-                            },
-                            error: function (error) {
-                              // $('#response').html('Error uploading video: ' + error.responseText);
-                              console.log( 'Error uploading video: ' + error.responseText )
-                            }
-                        });
-                        */
                       }                        
                   // add video
                 // hearder controls
