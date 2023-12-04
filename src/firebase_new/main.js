@@ -5296,7 +5296,7 @@ function backToLogInLandingPage(){
                                            
                       let video_Width = 0
                       let video_Duration = 0
-                      createRightSideFooter_editPreview_addVideo_file.onchange = (e)=>{ alert(e.target.title)
+                      createRightSideFooter_editPreview_addVideo_file.onchange = (e)=>{ 
                         // --------- check video width ------------- 
                           const videoFile = $('#addMessengerMultiVideos')[0].files[0]
                           const videoElement = document.createElement('video');
@@ -5349,7 +5349,8 @@ function backToLogInLandingPage(){
                                   const videoURL = URL.createObjectURL(videoBlob);
                           
                                   // Set the video source to the created data URL
-                                  $('#testVideoElem').attr('src', videoURL);
+                                  addAnotherPicesMsgPortion_videoPice( `messagePortion_"${e.target.title}"`, videoURL)
+                                  //$('#testVideoElem').attr('src', videoURL);
                           
                                   // Output the file name
                                   console.log('File Name:', decodeURIComponent(fileName) );
@@ -5362,9 +5363,10 @@ function backToLogInLandingPage(){
 
                             } else {
                               // no processing required
+                              addAnotherPicesMsgPortion_videoPice( `messagePortion_"${e.target.title}"`, videoURL)
 
                               // Set the video source to the created data URL
-                              $('#testVideoElem').attr('src', videoURL);
+                              //$('#testVideoElem').attr('src', videoURL);
                             }
 
                             // Clean up: revoke the URL created for the video file
@@ -5412,11 +5414,11 @@ function backToLogInLandingPage(){
 
 
                   // video ------------------------------------------------ 
-                    const videoElem = document.createElement('video')
-                    videoElem.setAttribute('id', 'testVideoElem')
-                    videoElem.setAttribute('controls', true)
-                    videoElem.setAttribute('style', 'width: 200px;height: 200px;')
-                    createRightSideFooter_editPreview_mainSubSection_childSubSection3.appendChild( videoElem )
+                    // const videoElem = document.createElement('video')
+                    // videoElem.setAttribute('id', 'testVideoElem')
+                    // videoElem.setAttribute('controls', true)
+                    // videoElem.setAttribute('style', 'width: 200px;height: 200px;')
+                    // createRightSideFooter_editPreview_mainSubSection_childSubSection3.appendChild( videoElem )
                   // video ------------------------------------------------
                   
                   
@@ -5510,8 +5512,23 @@ function backToLogInLandingPage(){
                     // image pice
 
                     // video pice
-                      function addAnotherPicesMsgPortion_videoPice(val){
+                      function addAnotherPicesMsgPortion_videoPice(val, src){
+                        mainPicsInc++
+                      
+                        const createRightSideFooter_editPreview_mainPicsAnother = document.createElement('video')                      
+                        createRightSideFooter_editPreview_mainPicsAnother.setAttribute('class', 'messengerRightSideFooter_editPreview_mainPics messengerMultiVideos')
+                        createRightSideFooter_editPreview_mainPicsAnother.setAttribute('title', mainPicsInc)
+                        createRightSideFooter_editPreview_mainPicsAnother.setAttribute('src', src)
+                        createRightSideFooter_editPreview_mainPicsAnother.setAttribute('controls', true)
+                        createRightSideFooter_editPreview_mainPicsAnother.setAttribute('style', 'display:block;width:100%;')
+                        createRightSideFooter_editPreview_mainPicsAnother.setAttribute('id', `messagePortion_"${mainPicsInc}"` )
 
+                        // check if it has appended dummySpace elem
+                        if( document.getElementById( 'dummySpaceAfter_"' + document.getElementById( val ).title + '"' ) != null){ 
+                          document.getElementById( 'dummySpaceAfter_"' + document.getElementById( val ).title + '"' ).insertAdjacentElement("afterend", createRightSideFooter_editPreview_mainPicsAnother)
+                        } else { 
+                          document.getElementById( val ).insertAdjacentElement("afterend", createRightSideFooter_editPreview_mainPicsAnother)
+                        }
                       }
                     // video pice
                   // add another pice
