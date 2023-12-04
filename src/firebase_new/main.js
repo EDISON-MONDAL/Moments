@@ -4677,6 +4677,10 @@ function backToLogInLandingPage(){
                         document.getElementById('addMessengerMultiImages').title = val
                       // image
 
+                      // video
+                        document.getElementById('addMessengerMultiVideos').title = val
+                      // video
+
 
                       // bold
                         if( messagesObject[ `"${val}"` ].bold == true ) {
@@ -5278,7 +5282,7 @@ function backToLogInLandingPage(){
                     const createRightSideFooter_editPreview_addVideo = document.createElement('label')
                     createRightSideFooter_editPreview_addVideo.setAttribute('class', 'material-icons-outlined messengerRightSideFooter_editPreview_header_addVideoButton')
                     createRightSideFooter_editPreview_addVideo.setAttribute('for', 'addMessengerMultiVideos')
-                    createRightSideFooter_editPreview_addVideo.innerText = 'add_photo_alternate'
+                    createRightSideFooter_editPreview_addVideo.innerText = 'video_file'
                     createRightSideFooter_editPreview_header_SubSection.appendChild( createRightSideFooter_editPreview_addVideo )
 
                       const createRightSideFooter_editPreview_addVideo_file = document.createElement('input')
@@ -5292,7 +5296,7 @@ function backToLogInLandingPage(){
                                            
                       let video_Width = 0
                       let video_Duration = 0
-                      createRightSideFooter_editPreview_addVideo_file.onchange = (e)=>{ 
+                      createRightSideFooter_editPreview_addVideo_file.onchange = (e)=>{ alert(e.target.title)
                         // --------- check video width ------------- 
                           const videoFile = $('#addMessengerMultiVideos')[0].files[0]
                           const videoElement = document.createElement('video');
@@ -5506,7 +5510,7 @@ function backToLogInLandingPage(){
                     // image pice
 
                     // video pice
-                      function addAnotherPicesMsgPortion_videoPice(){
+                      function addAnotherPicesMsgPortion_videoPice(val){
 
                       }
                     // video pice
