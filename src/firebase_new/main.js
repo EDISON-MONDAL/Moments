@@ -5320,6 +5320,7 @@ function backToLogInLandingPage(){
                         // --------- check video width ------------- 
 
 
+
                         function videoCompressProcess() {                          
                           if( video_Duration <= 600){
                             if(video_Width >= 852){
@@ -5413,15 +5414,7 @@ function backToLogInLandingPage(){
                   // main sub section child 3
 
 
-                  // video ------------------------------------------------ 
-                    // const videoElem = document.createElement('video')
-                    // videoElem.setAttribute('id', 'testVideoElem')
-                    // videoElem.setAttribute('controls', true)
-                    // videoElem.setAttribute('style', 'width: 200px;height: 200px;')
-                    // createRightSideFooter_editPreview_mainSubSection_childSubSection3.appendChild( videoElem )
-                  // video ------------------------------------------------
-                  
-                  
+                                    
 
                   let mainPicsInc = 0
                   // default pice of message portion
@@ -5512,11 +5505,11 @@ function backToLogInLandingPage(){
                     // image pice
 
                     // video pice
-                      function addAnotherPicesMsgPortion_videoPice(val, src){
+                      function addAnotherPicesMsgPortion_videoPice(val, src){ 
                         mainPicsInc++
                       
                         const createRightSideFooter_editPreview_mainPicsAnother = document.createElement('video')                      
-                        createRightSideFooter_editPreview_mainPicsAnother.setAttribute('class', 'messengerRightSideFooter_editPreview_mainPics messengerMultiVideos')
+                        createRightSideFooter_editPreview_mainPicsAnother.setAttribute('class', `messengerRightSideFooter_editPreview_mainPics messengerMultiVideos messengerMultiVideos_${messengerRoomContents._id}`)
                         createRightSideFooter_editPreview_mainPicsAnother.setAttribute('title', mainPicsInc)
                         createRightSideFooter_editPreview_mainPicsAnother.setAttribute('src', src)
                         createRightSideFooter_editPreview_mainPicsAnother.setAttribute('controls', true)
@@ -5529,6 +5522,16 @@ function backToLogInLandingPage(){
                         } else { 
                           document.getElementById( val ).insertAdjacentElement("afterend", createRightSideFooter_editPreview_mainPicsAnother)
                         }
+
+
+                        
+                        setInterval(()=>{
+                          const videoElement = document.querySelector(`.messengerMultiVideos_${messengerRoomContents._id}`)
+
+                          if(videoElement){
+                            console.log('exist================')
+                          }else console.log('not exist===========')
+                        }, 1000)
                       }
                     // video pice
                   // add another pice
