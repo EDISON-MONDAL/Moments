@@ -19,7 +19,7 @@
     <title>Home</title>
     
 </head>
-<body id="body" onresize="rePositionProfileDescription(), stePositionMessenger(), resezizeMessenger(), profilePicReviewBeforeUpload(), allPicPreviewUpadateAllProfile(), hideAndShowActiveFreindList(), repositionFriendsRequestsFollowers()">
+<body id="body" onresize="rePositionProfileDescription(), stePositionMessenger(), resezizeMessenger(), profilePicReviewBeforeUpload(), allPicPreviewUpadateAllProfile(), hideAndShowActiveFreindList(), repositionFriendsRequestsFollowers()" onunload="demoFunction()">
   
     <!-- header -->
     <div id="headerBar">
@@ -584,6 +584,14 @@
     // updateProfile.ejs
 
     
+</script>
+
+<script>
+  function demoFunction() {
+    localStorage.setItem("deleteVid", "break")
+  }
+
+  document.querySelector('body').onclick = ()=>{console.log(localStorage.getItem('deleteVid'))}
 </script>
 
 <script defer src="/firebaseNewMain.bundle.js"></script> <!--         src/firebase_new/main.js          -->
