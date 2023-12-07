@@ -518,6 +518,12 @@ app.use(bodyParser.json())
   });
   // video resizing and compression
 
+  // delete temporary video
+  app.post('/deleteTemporaryVideo', (req, res) => {
+    console.log('----------------------------------------------', req.body.fileName)
+  })
+  // delete temporary video
+
 // -------- express-fileuploads only ----------
 
 

@@ -5350,11 +5350,11 @@ function backToLogInLandingPage(){
                                   const videoURL = URL.createObjectURL(videoBlob);
                           
                                   // Set the video source to the created data URL
-                                  addAnotherPicesMsgPortion_videoPice( `messagePortion_"${e.target.title}"`, videoURL)
+                                  addAnotherPicesMsgPortion_videoPice( `messagePortion_"${e.target.title}"`, videoURL, fileName )
                                   //$('#testVideoElem').attr('src', videoURL);
+
+                                  // const fileName_decoded = decodeURIComponent(fileName)
                           
-                                  // Output the file name
-                                  console.log('File Name:', decodeURIComponent(fileName) );
                                 },
                                 error: function (error) {
                                   // $('#response').html('Error uploading video: ' + error.responseText);
@@ -5364,7 +5364,7 @@ function backToLogInLandingPage(){
 
                             } else {
                               // no processing required
-                              addAnotherPicesMsgPortion_videoPice( `messagePortion_"${e.target.title}"`, videoURL)
+                              addAnotherPicesMsgPortion_videoPice( `messagePortion_"${e.target.title}"`, videoURL, null)
 
                               // Set the video source to the created data URL
                               //$('#testVideoElem').attr('src', videoURL);
@@ -5505,7 +5505,7 @@ function backToLogInLandingPage(){
                     // image pice
 
                     // video pice
-                      function addAnotherPicesMsgPortion_videoPice(val, src){ 
+                      function addAnotherPicesMsgPortion_videoPice(val, src, fileName){ 
                         mainPicsInc++
                       
                         const createRightSideFooter_editPreview_mainPicsAnother = document.createElement('video')                      
@@ -5525,13 +5525,33 @@ function backToLogInLandingPage(){
 
 
                         
-                        setInterval(()=>{
+                        const checkVideoElem = setInterval(()=>{
                           const videoElement = document.querySelector(`.messengerMultiVideos_${messengerRoomContents._id}`)
 
                           if(videoElement){
                             console.log('exist================')
-                          }else console.log('not exist===========')
+                          }else {
+                            console.log('not exist===========')
+                            deleteTheFile( fileName )
+                            clearInterval( checkVideoElem )
+                          }
                         }, 1000)
+
+                        function deleteTheFile( fileName ) {
+                          $.ajax({
+                            type: 'POST',
+                            url: '/deleteTemporaryVideo',  // The Express.js route for handling the video upload
+                            data: {
+                              fileName: fileName
+                            },
+                            success: function(data) {
+                              console.log('successfully file deleted', fileName)
+                            },
+                            error: function (error) {                              
+                              console.log( 'Error deleting video: ' + error.message )
+                            }
+                          })
+                        }
                       }
                     // video pice
                   // add another pice
