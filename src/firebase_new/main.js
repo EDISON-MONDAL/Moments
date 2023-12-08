@@ -892,40 +892,47 @@ function backToLogInLandingPage(){
                     // object friendly email
 
 
-                    setInterval(()=>{                      
-                      $.ajax({
-                        url: '/mongoJs/main/getMessages', // Replace with your server endpoint
-                        type: 'POST',
-                        data: {
-                          my_id: myId,
-                          room_id: DATA.messengerRoomContents[i]._id
-                        },
-                        success: function(response) {
-                          if(response == 'error' && response != null ){
-                            console.warn("Error in getting sms!" + response) 
+                    const perRoomSMSUpdate = setInterval(()=>{  
+                      const perProfileBarSingle = document.querySelector(`#messengerProfilesSingelBar_${ DATA.messengerRoomContents[i]._id }`)  
+                      
+                      if( perProfileBarSingle ){ console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+                        $.ajax({
+                          url: '/mongoJs/main/getMessages', // Replace with your server endpoint
+                          type: 'POST',
+                          data: {
+                            my_id: myId,
+                            room_id: DATA.messengerRoomContents[i]._id
+                          },
+                          success: function(response) {
+                            if(response == 'error' && response != null ){
+                              console.warn("Error in getting sms!" + response) 
 
-                          } else if( response == 'no sms' && response != null ){
+                            } else if( response == 'no sms' && response != null ){
 
-                            if( document.querySelector('#messengerProfilesSingelBar-contentControl-unseenMsg-' + DATA.messengerRoomContents[i]._id ) ){
-                              document.querySelector('#messengerProfilesSingelBar-contentControl-unseenMsg-' + DATA.messengerRoomContents[i]._id ).innerText = "No sms yet!"
+                              if( document.querySelector('#messengerProfilesSingelBar-contentControl-unseenMsg-' + DATA.messengerRoomContents[i]._id ) ){
+                                document.querySelector('#messengerProfilesSingelBar-contentControl-unseenMsg-' + DATA.messengerRoomContents[i]._id ).innerText = "No sms yet!"
+                              }
+
+                            } else {    
+                              console.warn("successfully get sms!")
+
+                              findOutUnseenSMS(response) 
+                              
+                              // get message glimps including unseen sms 
+                                getMessageGlimps( response._id, response.sms)                      
+                              // get message glimps including unseen sms
                             }
-
-                          } else {    
-                            console.warn("successfully get sms!")
-
-                            findOutUnseenSMS(response) 
-                            
-                            // get message glimps including unseen sms 
-                              getMessageGlimps( response._id, response.sms)                      
-                            // get message glimps including unseen sms
+                          },
+                          error: function(error) {
+                            if(error == 'error' && error != null ){
+                              console.warn("Err in getting sms!" + error)               
+                            }
                           }
-                        },
-                        error: function(error) {
-                          if(error == 'error' && error != null ){
-                            console.warn("Err in getting sms!" + error)               
-                          }
-                        }
-                      })
+                        })
+                      }
+                      else { console.log('======================================')
+                        clearInterval( perRoomSMSUpdate )
+                      }
                       
                     }, 2000)
               
