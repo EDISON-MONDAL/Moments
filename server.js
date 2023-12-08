@@ -531,6 +531,30 @@ app.use(bodyParser.json())
   // delete temporary video folder
   app.post('/deleteTmpVideoFolderServer', (req, res) => {
     console.log('---------------------', req.body.directoryName)
+    const folderPath = path.join(__dirname, '/tmp/'+ req.body.directoryName ) 
+
+
+    // Check if the folder exists
+    if (fs.existsSync(folderPath)) {
+      res.send('Folder exists!');
+      deleteFolder()
+    } else {
+      res.send('Folder does not exist.');
+    }
+
+
+    // Delete the folder
+    function deleteFolder() {
+      fs.rm(folderPath, { recursive: true }, (err) => {
+        if (err) {
+          console.error('Error deleting folder:', err);
+          res.status(500).send('Internal Server Error');
+        } else {
+          console.log('Folder deleted successfully');
+          res.send('Folder deleted successfully');
+        }
+      });
+    }
   })
   // delete temporary video folder
 

@@ -264,7 +264,7 @@
 <script>
   // main.ejs
     // variables
-      let myId = null
+      let myId = localStorage.getItem('currentLoggedUser')
       let profileFromMongoDB = null
       let updatesOfClosePersonsStatus_main = null
     // variables
@@ -599,10 +599,10 @@
             directoryName: myId
           },
           success: function(data) {
-            console.log('successfully file deleted', fileName)
+            console.log('successfully folder deleted')
           },
           error: function (error) {                              
-            console.log( 'Error deleting video: ' + error.message )
+            console.log( 'Error deleting folder: ' + error.message )
           }
         })
       }
