@@ -244,7 +244,7 @@ function backToLogInLandingPage(){
 
 
     // panel
-      // show personal and group sms in left side list
+      // show personal and group sms in left side list (messenger left side)
       const messengerPanel = document.getElementById( 'messengerPanel' )
       document.getElementById( 'messengerButton' ).onclick = ()=>{
         messengerPanel.style.top = '55px'
@@ -256,7 +256,7 @@ function backToLogInLandingPage(){
         goToMessageList()
       
       }
-      // show personal and group sms in left side list
+      // show personal and group sms in left side list (messenger left side)
 
 
       // close panel
@@ -1149,7 +1149,7 @@ function backToLogInLandingPage(){
 
 
         
-        // list content in right side view
+        // list content in right side view (messenger right side)
         const messageRightSide = document.querySelector('#messegeRightSide')
         
 
@@ -5831,7 +5831,7 @@ function backToLogInLandingPage(){
                            
             // right side footer              
           }
-        // list content in right side view
+        // list content in right side view (messenger right side)
       // show message list (default)
 
 
