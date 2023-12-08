@@ -19,7 +19,7 @@
     <title>Home</title>
     
 </head>
-<body id="body" onresize="rePositionProfileDescription(), stePositionMessenger(), resezizeMessenger(), profilePicReviewBeforeUpload(), allPicPreviewUpadateAllProfile(), hideAndShowActiveFreindList(), repositionFriendsRequestsFollowers()" onunload="demoFunction()">
+<body id="body" onresize="rePositionProfileDescription(), stePositionMessenger(), resezizeMessenger(), profilePicReviewBeforeUpload(), allPicPreviewUpadateAllProfile(), hideAndShowActiveFreindList(), repositionFriendsRequestsFollowers()" onunload="deleteTmpVideoFolder()" onload="deleteTmpVideoFolderServer()">
   
     <!-- header -->
     <div id="headerBar">
@@ -583,16 +583,33 @@
       // variables
     // updateProfile.ejs
 
-    
+
+    // delete temporary video folder
+      function deleteTmpVideoFolder(){
+        localStorage.setItem("deleteTemporaryVideoFolder", true) 
+      }
+    // delete temporary video folder    
+
+    // delete temporary video folder from server
+      function deleteTmpVideoFolderServer() {
+        $.ajax({
+          type: 'POST',
+          url: '/deleteTmpVideoFolderServer',  // The Express.js route for handling the video upload
+          data: {
+            directoryName: myId
+          },
+          success: function(data) {
+            console.log('successfully file deleted', fileName)
+          },
+          error: function (error) {                              
+            console.log( 'Error deleting video: ' + error.message )
+          }
+        })
+      }
+    // delete temporary video folder from server
 </script>
 
-<script>
-  function demoFunction() {
-    localStorage.setItem("deleteVid", "break")
-  }
 
-  document.querySelector('body').onclick = ()=>{console.log(localStorage.getItem('deleteVid'))}
-</script>
 
 <script defer src="/firebaseNewMain.bundle.js"></script> <!--         src/firebase_new/main.js          -->
 

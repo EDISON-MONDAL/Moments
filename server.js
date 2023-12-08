@@ -421,10 +421,14 @@ app.use(bodyParser.json())
       '-' +
       d.getSeconds();
 
-    let file_name =
-      req.body.myId + ' ' + date_string + ' ' + file.name;
 
-    file.mv('tmp/' + file_name, function (err) {
+    let file_name =
+      date_string + ' ' + file.name;
+
+    let directory = 'tmp/' + req.body.myId + '/'
+
+
+    file.mv(directory + file_name, function (err) {
       if (err) {
         console.error(err);
         return res.status(500).send('Error uploading file');
@@ -432,7 +436,7 @@ app.use(bodyParser.json())
       console.log('File Uploaded successfully');
 
       // Use fluent-ffmpeg to get video information
-      ffmpeg.ffprobe('tmp/' + file_name, (err, metadata) => {
+      ffmpeg.ffprobe(directory + file_name, (err, metadata) => {
         if (err) {
           console.error('Error:', err);
           res.status(500).send('Error getting video information');
@@ -449,7 +453,7 @@ app.use(bodyParser.json())
       });
       
 
-      ffmpeg('tmp/' + file_name)
+      ffmpeg(directory + file_name)
         .format('mp4')
         .videoCodec('libx264')
         //.videoBitrate('200k', true)
@@ -471,7 +475,7 @@ app.use(bodyParser.json())
 
 
           // Delete unprocessed uploaded video
-          fs.unlink('tmp/' + file_name, function (err) {
+          fs.unlink(directory + file_name, function (err) {
             if (err) console.error(err);
             console.log('Unprocessed video deleted');
           });
@@ -479,7 +483,7 @@ app.use(bodyParser.json())
 
           // Manage compressed video
           try {
-            const filePath = path.join(__dirname, 'tmp', 'output-' + file_name);
+            const filePath = path.join(__dirname, directory, 'output-' + file_name);
 
             // Check if the file exists
             fs.stat(filePath, (err, stat) => {
@@ -513,7 +517,7 @@ app.use(bodyParser.json())
             res.status(500).send('Internal Server Error');
           }
         })
-        .save('tmp/output-' + file_name);
+        .save(directory + 'output-' + file_name);
     });
   });
   // video resizing and compression
@@ -523,6 +527,12 @@ app.use(bodyParser.json())
     console.log('----------------------------------------------', req.body.fileName)
   })
   // delete temporary video
+
+  // delete temporary video folder
+  app.post('/deleteTmpVideoFolderServer', (req, res) => {
+    console.log('---------------------', req.body.directoryName)
+  })
+  // delete temporary video folder
 
 // -------- express-fileuploads only ----------
 
