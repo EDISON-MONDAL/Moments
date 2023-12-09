@@ -266,6 +266,9 @@ function backToLogInLandingPage(){
         messengerPanel.style.opacity = 0
 
         isMessengerDisplay = false
+
+        const showMessageList_SubHolder = document.querySelector('#showMessageList_subHolder') 
+        showMessageList_SubHolder.innerHTML = '' // clear old values
       }
       // close panel
 
@@ -489,7 +492,7 @@ function backToLogInLandingPage(){
 
       // show message list (default)
 
-        const showMessageList_SubHolder = document.querySelector('#showMessageList_subHolder')        
+        let showMessageList_SubHolder = document.querySelector('#showMessageList_subHolder')        
         
         // result list
         async function goToMessageList(){
@@ -500,33 +503,43 @@ function backToLogInLandingPage(){
           
           // inbox loop
             // get all message (constant update)
-              setInterval(()=>{
-                $.ajax({
-                  url: '/mongoJs/main/getAllSMSamongMessengerFriends', // Replace with your server endpoint
-                  type: 'POST',
-                  data: {
-                    my_id: myId,
-                  },
-                  success: function(response) {
-                    if(response == 'error' && response != null ){
-                      console.warn("Error in getting sms among messenger friends!" + response)  
-                
-                    } else if(response == 'no sms' && response != null){
-                      console.warn("No Sms among messenger friends!")
-                    } else if( response != null ){
-                      console.warn("successfully get sms among messenger friends!")
-                    
-                                     
-                      showProfileOneByOne(response)
+              const inboxLoop = setInterval(()=>{
+
+                showMessageList_SubHolder = document.querySelector('#showMessageList_subHolder') // always check DOM status
+
+                if(showMessageList_SubHolder){ console.log('----------------- ------------- ---------------')
+
+                  $.ajax({
+                    url: '/mongoJs/main/getAllSMSamongMessengerFriends', // Replace with your server endpoint
+                    type: 'POST',
+                    data: {
+                      my_id: myId,
+                    },
+                    success: function(response) {
+                      if(response == 'error' && response != null ){
+                        console.warn("Error in getting sms among messenger friends!" + response)  
+                  
+                      } else if(response == 'no sms' && response != null){
+                        console.warn("No Sms among messenger friends!")
+                      } else if( response != null ){
+                        console.warn("successfully get sms among messenger friends!")
                       
+                                       
+                        showProfileOneByOne(response)
+                        
+                      }
+                    },
+                    error: function(error) {
+                      if(error == 'error' && error != null ){
+                        console.warn("Err in getting sms among messenger friends!" + error)               
+                      }
                     }
-                  },
-                  error: function(error) {
-                    if(error == 'error' && error != null ){
-                      console.warn("Err in getting sms among messenger friends!" + error)               
-                    }
-                  }
-                })
+                  })
+
+                } else { console.log('~~~ ======= --------- .........')
+                  clearInterval( inboxLoop )
+                }
+
               }, 2000)
             // get all message (constant update)
 
@@ -895,7 +908,7 @@ function backToLogInLandingPage(){
                     const perRoomSMSUpdate = setInterval(()=>{  
                       const perProfileBarSingle = document.querySelector(`#messengerProfilesSingelBar_${ DATA.messengerRoomContents[i]._id }`)  
                       
-                      if( perProfileBarSingle ){ console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+                      if( perProfileBarSingle ){ 
                         $.ajax({
                           url: '/mongoJs/main/getMessages', // Replace with your server endpoint
                           type: 'POST',
@@ -930,7 +943,7 @@ function backToLogInLandingPage(){
                           }
                         })
                       }
-                      else { console.log('======================================')
+                      else { 
                         clearInterval( perRoomSMSUpdate )
                       }
                       
