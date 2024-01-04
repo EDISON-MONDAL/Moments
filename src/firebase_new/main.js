@@ -259,7 +259,7 @@ function backToLogInLandingPage(){
       // show personal and group sms in left side list (messenger left side)
 
 
-      // close panel
+      // close messenger panel
       document.getElementById( 'closeMessenger' ).onclick = ()=>{
         messengerPanel.style.top = -100 + 'px'
         messengerPanel.style.height = 0
@@ -267,10 +267,14 @@ function backToLogInLandingPage(){
 
         isMessengerDisplay = false
 
-        const showMessageList_SubHolder = document.querySelector('#showMessageList_subHolder') 
-        showMessageList_SubHolder.innerHTML = '' // clear old values
+        const showMessageList = document.querySelector('#showMessageList') 
+        showMessageList.innerHTML = '' // clear old values
+
+        const messegeRightSide = document.querySelector('#messegeRightSide')
+        messegeRightSide.innerHTML = '' // clear old values
+        messegeRightSide.style.background = 'none'
       }
-      // close panel
+      // close messenger panel
 
 
 
@@ -492,13 +496,20 @@ function backToLogInLandingPage(){
 
       // show message list (default)
 
-        let showMessageList_SubHolder = document.querySelector('#showMessageList_subHolder')        
-        
+        let showMessageList = document.querySelector('#showMessageList')
+                
+
         // result list
         async function goToMessageList(){
 
+          showMessageList.innerHTML = '' // clear old values 
+
+
+          let showMessageList_SubHolder = document.createElement('div')
+          showMessageList_SubHolder.setAttribute('id', `showMessageList_subHolder`)
+          showMessageList.appendChild( showMessageList_SubHolder )
           showMessageList_SubHolder.style.padding = '5px' // set padding to message list subholder
-          showMessageList_SubHolder.innerHTML = '' // clear old values
+          
 
           
           // inbox loop
@@ -908,7 +919,7 @@ function backToLogInLandingPage(){
                     const perRoomSMSUpdate = setInterval(()=>{  
                       const perProfileBarSingle = document.querySelector(`#messengerProfilesSingelBar_${ DATA.messengerRoomContents[i]._id }`)  
                       
-                      if( perProfileBarSingle ){ 
+                      if( perProfileBarSingle ){  
                         $.ajax({
                           url: '/mongoJs/main/getMessages', // Replace with your server endpoint
                           type: 'POST',
@@ -943,7 +954,7 @@ function backToLogInLandingPage(){
                           }
                         })
                       }
-                      else { 
+                      else {  
                         clearInterval( perRoomSMSUpdate )
                       }
                       
@@ -2945,36 +2956,44 @@ function backToLogInLandingPage(){
                             
               // message update
                 // check unseen sms                   
-                  setInterval(()=>{
-                    // retrive sms with this peer message room
-                      $.ajax({
-                        url: '/mongoJs/main/getMessages', // Replace with your server endpoint
-                        type: 'POST',
-                        data: {
-                          my_id: myId,
-                          room_id: messengerRoomContents._id
-                        },
-                        success: function(response) {
-                          if(response == 'error' && response != null ){
-                            console.warn("Error in getting sms!" + response) 
+                  const checkUnseenSMS = setInterval(()=>{
 
-                          } else if( response == 'no sms' && response != null ){
+                    const messengerRightSideMessageViewMiddlePart_subSection_check = document.querySelector('.messengerRightSideMessageViewMiddlePart_subSection')
 
-                            console.warn("No sms yet!")
+                    if(messengerRightSideMessageViewMiddlePart_subSection_check){
+                      // retrive sms with this peer message room
+                        $.ajax({
+                          url: '/mongoJs/main/getMessages', // Replace with your server endpoint
+                          type: 'POST',
+                          data: {
+                            my_id: myId,
+                            room_id: messengerRoomContents._id
+                          },
+                          success: function(response) {
+                            if(response == 'error' && response != null ){
+                              console.warn("Error in getting sms!" + response) 
 
-                          } else {    
-                            console.warn("successfully get sms!")
+                            } else if( response == 'no sms' && response != null ){
 
-                            findOutUnseenSMS(response)                     
+                              console.warn("No sms yet!")
+
+                            } else {    
+                              console.warn("successfully get sms!")
+
+                              findOutUnseenSMS(response)                     
+                            }
+                          },
+                          error: function(error) {
+                            if(error == 'error' && error != null ){
+                              console.warn("Err in getting sms!" + error)               
+                            }
                           }
-                        },
-                        error: function(error) {
-                          if(error == 'error' && error != null ){
-                            console.warn("Err in getting sms!" + error)               
-                          }
-                        }
-                      })
-                    // retrive sms with this peer message room
+                        })
+                      // retrive sms with this peer message room
+                    } else {
+                      clearInterval(checkUnseenSMS)
+                    }
+
                   }, 2000)
                   
                     
